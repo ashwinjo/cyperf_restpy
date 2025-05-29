@@ -1,0 +1,584 @@
+313 - 58TongCheng
+314 - 7shifts
+14 - Adobe Reader Updates Chrome
+15 - Adobe Reader Updates Firefox
+16 - Adobe Reader Updates Internet Explorer
+17 - Adobe Reader Updates Microsoft Edge
+2 - ADP Chrome
+3 - ADP Firefox
+4 - ADP Internet Explorer
+5 - ADP Microsoft Edge
+319 - Afreeca TV
+315 - AI LLM over Generic HTTP
+18 - Airbnb Chrome
+19 - Airbnb Firefox
+20 - Airbnb Internet Explorer
+21 - Airbnb Microsoft Edge
+321 - Alibaba
+320 - Al Jazeera
+322 - Amazon Chime
+323 - Amazon E-commerce
+324 - Amazon Video
+879 - AMQP Publisher Anonymous Exchange
+880 - AMQP Subscriber Anonymous Exchange
+325 - Angry Birds Friends
+316 - AOL Chat (AIM)
+882 - AOL Instant Messenger
+317 - AOL Mail
+527 - AP0313
+326 - Apache Cassandra
+893 - Apache ZAB
+327 - AppDynamics
+547 - Appnew
+328 - Appogee
+301 - appointy Chrome
+302 - appointy Firefox
+303 - appointy Internet Explorer
+304 - appointy Microsoft Edge
+1125 - App-Replay
+6 - AWS Console Chrome
+7 - AWS Console Firefox
+8 - AWS Console Internet Explorer
+9 - AWS Console Microsoft Edge
+318 - AWS EC2
+10 - AWS S3 Chrome
+11 - AWS S3 Firefox
+12 - AWS S3 Internet Explorer
+13 - AWS S3 Microsoft Edge
+896 - BACnet-IP
+22 - Baidu Chrome
+23 - Baidu Firefox
+24 - Baidu Internet Explorer
+25 - Baidu Maps Chrome
+26 - Baidu Maps Firefox
+27 - Baidu Maps Internet Explorer
+28 - Baidu Maps Microsoft Edge
+29 - Baidu Microsoft Edge
+897 - Baidu Netdisk
+329 - Baidu Tieba
+30 - Bilibili Chrome
+31 - Bilibili Firefox
+32 - Bilibili Internet Explorer
+33 - Bilibili Microsoft Edge
+330 - Bing Chat
+34 - BitTorrent Download
+35 - BitTorrent Upload
+331 - Blogger
+332 - Box
+519 - brcm-Demo
+521 - Brcm-SFTP
+333 - BuzzFeed
+341 - Candy Crush
+342 - Canva
+343 - Capwap
+334 - CBS News
+1123 - CCA-mssql-db-encrypted
+1124 - CCA-ssl
+335 - CCTV Video Mobile
+344 - Certify
+345 - ChatGPT
+346 - ChatGPT4
+336 - CIFS
+36 - Cisco Spark Chrome
+37 - Cisco Spark Firefox
+38 - Cisco Spark Internet Explorer
+39 - Cisco Spark Microsoft Edge
+347 - Citrix
+348 - Claude AI
+337 - CNBC
+338 - CNN
+40 - Commvault Chrome
+41 - Commvault Firefox
+42 - Commvault Internet Explorer
+43 - Commvault Microsoft Edge
+349 - Concur
+350 - Confluence
+339 - CQL v4
+44 - Crawling Wikipedia (Chinese) Chrome
+45 - Crawling Wikipedia (Chinese) Firefox
+46 - Crawling Wikipedia (Chinese) Internet Explorer
+47 - Crawling Wikipedia (Chinese) Microsoft Edge
+537 - CR-Scne
+340 - CSDN
+48 - Ctrip Chrome
+49 - Ctrip Firefox
+50 - Ctrip Internet Explorer
+51 - Ctrip Microsoft Edge
+553 - Custom application Apr 30 2025 15:19
+554 - Custom application May 05 2025 14:56
+355 - Dailymotion
+356 - Dalle2
+351 - DAZN
+352 - DB2
+357 - Dianping
+922 - DICOM
+358 - Discord
+353 - DLMS
+924 - DNP3
+53 - DNS
+52 - DNS Flood
+54 - DocuSign Chrome
+55 - DocuSign Firefox
+56 - DocuSign Internet Explorer
+57 - DocuSign Microsoft Edge
+930 - DoIP
+544 - DOm2-Gem
+543 - DomVDI
+359 - Doodle
+58 - Dreambox Chrome
+59 - Dreambox Firefox
+60 - Dreambox Internet Explorer
+61 - Dreambox Microsoft Edge
+361 - Dropbox
+360 - Dropbox Paper
+354 - DStv
+362 - DuckDuckGo
+305 - eBanking Chrome to Apache
+306 - eBanking Firefox to IIS
+307 - eBanking Internet Explorer to Nginx
+308 - eBanking Microsoft Edge to Apache
+367 - Ebay
+363 - Ebay Chrome
+364 - Ebay Firefox
+365 - Ebay Internet Explorer
+366 - Ebay Microsoft Edge
+504 - eDonkey
+62 - EpixNow Chrome
+63 - EpixNow Firefox
+64 - EpixNow Internet Explorer
+65 - EpixNow Microsoft Edge
+309 - eShop Chrome to Apache
+310 - eShop Firefox to IIS
+311 - eShop Internet Explorer to Nginx
+312 - eShop Microsoft Edge to Apache
+940 - Ethernet-IP Connected Message
+941 - Ethernet-IP Unconnected Message
+368 - Evernote Desktop
+369 - Evernote Mobile iOS
+370 - Everquest
+71 - Facebook Audio
+67 - Facebook Audio Chrome
+68 - Facebook Audio Firefox
+69 - Facebook Audio Internet Explorer
+70 - Facebook Audio Microsoft Edge
+72 - Facebook Chrome
+73 - Facebook Firefox
+74 - Facebook Internet Explorer
+76 - FacebookLive Chrome
+77 - FacebookLive Firefox
+78 - FacebookLive Internet Explorer
+79 - FacebookLive Microsoft Edge
+371 - Facebook Marketplace
+75 - Facebook Microsoft Edge
+558 - FBNew
+552 - FE-New-App
+563 - FE-New-AppMarian
+945 - FIXT Session
+372 - Flipgrid
+373 - Fox News
+66 - FTP
+80 - Gab Chrome
+81 - Gab Firefox
+82 - Gab Internet Explorer
+83 - Gab Microsoft Edge
+84 - Gaode Maps Chrome
+85 - Gaode Maps Firefox
+86 - Gaode Maps Internet Explorer
+87 - Gaode Maps Microsoft Edge
+949 - GB-T 32960
+376 - Gemini API
+88 - Gettr Chrome
+89 - Gettr Firefox
+90 - Gettr Internet Explorer
+91 - Gettr Microsoft Edge
+374 - GIPHY
+377 - Git over HTTP
+92 - Gmail Chrome
+93 - Gmail Firefox
+94 - Gmail Internet Explorer
+95 - Gmail Microsoft Edge
+375 - GMX Mail
+378 - GoDaddy
+380 - Google Analytics
+96 - Google App Engine Chrome
+97 - Google App Engine Firefox
+98 - Google App Engine Internet Explorer
+99 - Google App Engine Microsoft Edge
+381 - Google Bard
+382 - Google Cache
+383 - Google Calendar
+100 - Google Classroom Chrome
+101 - Google Classroom Firefox
+102 - Google Classroom Internet Explorer
+103 - Google Classroom Microsoft Edge
+384 - Google Cloud Print
+104 - Google Cloud Storage Chrome
+105 - Google Cloud Storage Firefox
+106 - Google Cloud Storage Internet Explorer
+107 - Google Cloud Storage Microsoft Edge
+385 - Google Docs
+108 - Google Drive Chrome
+109 - Google Drive Firefox
+110 - Google Drive Internet Explorer
+111 - Google Drive Microsoft Edge
+386 - Google Earth Pro
+120 - GoogleHangouts Chrome
+121 - GoogleHangouts Firefox
+122 - GoogleHangouts Internet Explorer
+123 - GoogleHangouts Microsoft Edge
+387 - Google Keep
+388 - Google Location Services
+124 - GooglePhotos Chrome
+125 - GooglePhotos Firefox
+126 - GooglePhotos Internet Explorer
+127 - GooglePhotos Microsoft Edge
+389 - Google Play
+390 - Google Plus
+391 - Google Safe Browsing
+392 - Google Search
+112 - Google Sheets Chrome
+113 - Google Sheets Firefox
+114 - Google Sheets Internet Explorer
+115 - Google Sheets Microsoft Edge
+116 - Google Slides Chrome
+117 - Google Slides Firefox
+118 - Google Slides Internet Explorer
+119 - Google Slides Microsoft Edge
+393 - Google Translate
+394 - Google Voice Action
+379 - GoToMeeting
+539 - gsso-app
+395 - Guacamole
+397 - HBOMax
+396 - HBO Now
+549 - Hipa-Capt
+974 - HL7v2.7
+398 - Hotstar
+128 - HTTP App
+129 - Hulu Chrome
+130 - Hulu Firefox
+131 - Hulu Internet Explorer
+132 - Hulu Microsoft Edge
+976 - IDENT
+977 - IEC104
+399 - IEEE C37.118 Synchrophasor TCP
+505 - iHeartRadio
+400 - Indiatimes
+401 - Informix Database
+133 - Instacart Chrome
+134 - Instacart Firefox
+135 - Instacart Internet Explorer
+136 - Instacart Microsoft Edge
+403 - Instagram
+402 - Instagram Mobile
+979 - IPMI
+506 - iQiyi Web
+507 - iTunes Desktop
+137 - Jingdong Chrome
+138 - Jingdong Firefox
+139 - Jingdong Internet Explorer
+140 - Jingdong Microsoft Edge
+141 - Jira Chrome
+142 - Jira Firefox
+143 - Jira Internet Explorer
+144 - Jira Microsoft Edge
+404 - Jira Service Desk
+984 - JSON-RPC With Array
+985 - JSON-RPC With Dictionary
+987 - Kafka
+405 - Kodi
+530 - KPAWS
+406 - Kugou Music
+407 - LDAP
+145 - League of Legends Chrome
+146 - League of Legends Firefox
+147 - League of Legends Internet Explorer
+148 - League of Legends Microsoft Edge
+408 - LinkedIn
+993 - Lis2-A2
+534 - LLM-Demo-App
+991 - LPD
+409 - LwM2M over MQTT Client
+410 - LwM2M over MQTT Server
+152 - Mail.ru Chrome
+153 - Mail.ru Firefox
+154 - Mail.ru Internet Explorer
+155 - Mail.ru Microsoft Edge
+156 - Mango TV Chrome
+157 - Mango TV Firefox
+158 - Mango TV Internet Explorer
+159 - Mango TV Microsoft Edge
+411 - Manufacturing Message Specification (MMS)
+412 - Mastodon
+1000 - Memcached
+160 - Meraki Chrome
+161 - Meraki Firefox
+162 - Meraki Internet Explorer
+163 - Meraki Microsoft Edge
+164 - Mewe Chrome
+165 - Mewe Firefox
+166 - Mewe Internet Explorer
+167 - Mewe Microsoft Edge
+168 - Microsoft Azure Chrome
+169 - Microsoft Azure Firefox
+170 - Microsoft Azure Internet Explorer
+171 - Microsoft Azure Microsoft Edge
+413 - Microsoft Forms
+414 - Microsoft Lists
+415 - Microsoft Planner
+416 - Microsoft Power BI
+417 - Microsoft SharePoint
+418 - Microsoft Stream
+419 - Microsoft To Do
+420 - Microsoft Whiteboard
+421 - Microsoft Word
+172 - Modbus
+173 - MongoDB
+996 - MOXA Nport
+149 - MQTT Publisher
+150 - MQTT Subscriber
+997 - MSRP
+151 - MS-SQL Server
+1010 - Mxit Desktop Multiple Status Messages
+525 - MyApp
+422 - MySQL
+425 - Naukri
+423 - NBC News
+1013 - NDMP
+1017 - NetBIOS
+175 - Netease Music Chrome
+176 - Netease Music Firefox
+177 - Netease Music Internet Explorer
+178 - Netease Music Microsoft Edge
+426 - Netflix
+533 - New-AI-app
+559 - NewApp
+545 - New-Flow
+427 - NewsBreak
+428 - Nextdoor
+174 - NFSv3
+424 - NTP
+1015 - NTPv2
+187 - Office365 Excel Chrome
+188 - Office365 Excel Firefox
+189 - Office365 Excel Internet Explorer
+190 - Office365 Excel Microsoft Edge
+191 - Office365 OneDrive Chrome
+192 - Office365 OneDrive Firefox
+193 - Office365 OneDrive Internet Explorer
+194 - Office365 OneDrive Microsoft Edge
+434 - Office365 OneNote
+429 - Office 365 Outlook Calendar
+195 - Office365 Outlook Chrome
+196 - Office365 Outlook Firefox
+197 - Office365 Outlook Internet Explorer
+198 - Office365 Outlook Microsoft Edge
+183 - Office 365 Outlook People Chrome
+184 - Office 365 Outlook People Firefox
+185 - Office 365 Outlook People Internet Explorer
+186 - Office 365 Outlook People Microsoft Edge
+430 - Office 365 Outlook Tasks
+431 - Office 365 Outlook Viva Insights
+432 - Office 365 PowerPoint Online
+433 - Office 365 Sway
+179 - OK.ru Chrome
+180 - OK.ru Firefox
+181 - OK.ru Internet Explorer
+182 - OK.ru Microsoft Edge
+435 - Okta Multifactor Authentication
+1021 - OPC UA OPC UA Binary Secure - Get Endpoints Response
+1022 - OPC UA Secure Conversation
+436 - OpenAI API
+437 - Openai Playground
+518 - Optumdemosftp
+199 - Oracle Database
+438 - Overleaf
+439 - Paltalk
+440 - Pandora iPhone
+441 - Parler
+442 - Pinterest
+443 - Pokemon GO
+200 - POP3
+205 - Portal Chrome to Apache
+206 - Portal Firefox to IIS
+207 - Portal Internet Explorer to Nginx
+208 - Portal Microsoft Edge to Apache
+1038 - PortMapper
+209 - PostgreSQL
+210 - Profinet PNIO-CM
+556 - PsedocoFB
+201 - PUBG Chrome
+202 - PUBG Firefox
+203 - PUBG Internet Explorer
+204 - PUBG Microsoft Edge
+1122 - QcomGemini
+444 - QQ Music
+211 - Quora Chrome
+212 - Quora Firefox
+213 - Quora Internet Explorer
+214 - Quora Microsoft Edge
+1040 - Quote of the Day(UDP)
+215 - RADIUS
+216 - Reddit Chrome
+217 - Reddit Firefox
+218 - Reddit Internet Explorer
+219 - Reddit Microsoft Edge
+445 - Rediffmail
+446 - Redis
+1041 - RIPv2
+1047 - Rlogin
+1048 - Rsync
+1042 - RSYNC modules list
+1043 - RTMP Chunk
+447 - Rumble
+1044 - RUSERS
+220 - S7comm
+454 - SaavnMusic
+223 - Salesforce Chrome
+224 - Salesforce Firefox
+225 - Salesforce Internet Explorer
+226 - Salesforce Microsoft Edge
+455 - Seamless
+456 - Seesaw
+227 - SendGrid Chrome
+228 - SendGrid Firefox
+229 - SendGrid Internet Explorer
+230 - SendGrid Microsoft Edge
+231 - Service-Now Chrome
+232 - Service-Now Firefox
+233 - Service-Now Internet Explorer
+234 - Service-Now Microsoft Edge
+457 - ShareFile
+458 - Shopify
+235 - Sina Weibo Chrome
+236 - Sina Weibo Firefox
+237 - Sina Weibo Internet Explorer
+238 - Sina Weibo Microsoft Edge
+239 - Skype 8 Chrome
+240 - Skype 8 Firefox
+241 - Skype 8 Internet Explorer
+242 - Skype 8 Microsoft Edge
+243 - Skype Chrome
+244 - Skype Firefox
+245 - Skype Internet Explorer
+246 - Skype Microsoft Edge
+221 - SMBv2
+448 - SMPP Receiver Binding
+449 - SMPP Transceiver Binding
+450 - SMPP Transmitter Binding
+222 - SMTP
+247 - Snapchat Web Chrome
+248 - Snapchat Web Firefox
+249 - Snapchat Web Internet Explorer
+250 - Snapchat Web Microsoft Edge
+459 - Snapdeal
+451 - SNMPv1
+452 - SNMPv2c
+251 - Social Network Chrome to Apache
+252 - Social Network Firefox to IIS
+253 - Social Network Internet Explorer to Nginx
+254 - Social Network Microsoft Edge to Apache
+460 - SolarWinds NCM
+461 - SolarWinds NPM WebConsole
+462 - SolarWinds SAM
+463 - Soundcloud
+255 - Splunk Chrome
+256 - Splunk Firefox
+257 - Splunk Internet Explorer
+258 - Splunk Microsoft Edge
+453 - SQLMon
+464 - StandardMedia
+1056 - STOMP
+465 - SunRPC BIND
+1069 - Sybase Database
+466 - TCP App
+259 - Telnet
+471 - Tencent Video
+472 - TikTok
+473 - Tinder
+474 - Tonghuashun
+475 - Toutiao
+1080 - Tridium Niagara Fox
+260 - Tubi Chrome
+261 - Tubi Firefox
+262 - Tubi Internet Explorer
+263 - Tubi Microsoft Edge
+476 - Tumblr
+467 - TWC Chrome
+468 - TWC Firefox
+469 - TWC Internet Explorer
+470 - TWC Microsoft Edge
+477 - Twitch
+478 - Twitter Mobile
+479 - Uber
+480 - Udemy
+1 - UDP Stream
+1084 - UMAS
+508 - uTorrent
+524 - VDI-Aviatrix
+483 - Verse By Verse
+484 - Viber
+268 - Video Platform Chrome to Apache
+269 - Video Platform Firefox to IIS
+270 - Video Platform Internet Explorer to Nginx
+271 - Video Platform Microsoft Edge to Apache
+264 - VKontakte Chrome
+265 - VKontakte Firefox
+266 - VKontakte Internet Explorer
+267 - VKontakte Microsoft Edge
+481 - VMware Horizon Client
+482 - VMware Horizon Connection Server
+485 - VoIP Basic Call
+1092 - WAP 1.2
+488 - Wattpad
+542 - Webcrawler
+489 - Web-ICQ
+486 - WHOIS
+490 - Wikipedia
+491 - Windows Live Mail
+492 - Windows Updates
+493 - WireGuard VPN
+272 - WolframAlpha Chrome
+273 - WolframAlpha Firefox
+274 - WolframAlpha Internet Explorer
+275 - WolframAlpha Microsoft Edge
+494 - WordPress
+495 - World of Warcraft
+1094 - WS-Discovery
+1095 - WTP
+487 - WWW File Share Pro
+1106 - X11 Connections Initiation
+496 - X.com
+497 - XueXiQiangGuo
+498 - Yahoo Chat
+499 - Yahoo Groups
+280 - Yahoo Mail Chrome
+281 - Yahoo Mail Firefox
+282 - Yahoo Mail Internet Explorer
+283 - Yahoo Mail Microsoft Edge
+284 - Yammer Chrome
+285 - Yammer Firefox
+286 - Yammer Internet Explorer
+287 - Yammer Microsoft Edge
+288 - Youku Chrome
+289 - Youku Firefox
+290 - Youku Internet Explorer
+291 - Youku Microsoft Edge
+292 - Youtube Chrome
+293 - Youtube Firefox
+294 - Youtube Internet Explorer
+295 - Youtube Microsoft Edge
+500 - Youtube Music
+276 - YYLive Chrome
+277 - YYLive Firefox
+278 - YYLive Internet Explorer
+279 - YYLive Microsoft Edge
+501 - Zalo
+1112 - Zendesk
+502 - Zhihu
+296 - Zoom All Hands Participant
+297 - Zoom All Hands Presenter
+298 - Zoom Brainstorming Participant
+299 - Zoom Classroom Student
+300 - Zoom Classroom Teacher
+503 - Zoosk
