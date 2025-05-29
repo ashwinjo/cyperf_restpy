@@ -47,7 +47,9 @@ class CyperfTestRunner:
         self.session_client = SessionsApi(self.client)
 
 
-    def get_cyperf_client(self, controller_ip: str = "3.141.193.119", refresh_token: str = None) -> cyperf.ApiClient:
+    def get_cyperf_client(self, 
+                          controller_ip: str = "3.141.193.119", 
+                          refresh_token: str = None) -> cyperf.ApiClient:
         """
         Creates and returns a CyPerf API client for the specified controller IP and refresh token.
 
@@ -64,7 +66,12 @@ class CyperfTestRunner:
         return cyperf.ApiClient(config)
 
 
-    def create_session(self, config_name: str = "Cyperf Empty Config", session_name: str = None, config_url: str = None) -> dict:
+    def create_session(
+        self,
+        config_name: str = "Cyperf Empty Config",
+        session_name: str = None,
+        config_url: str = None
+    ) -> dict:
         """
         Loads an existing configuration into a session or creates a new session with the specified configuration.
 
@@ -95,7 +102,11 @@ class CyperfTestRunner:
         return {"session_id": session.id, "session_name": session.name}
 
 
-    def load_configuration_from_zip(self, configuration_file: str = None, session_name: str = None) -> dict:
+    def load_configuration_from_zip(
+        self,
+        configuration_file: str = None,
+        session_name: str = None
+    ) -> dict:
         """
         Loads a configuration from a zip file, retrieves the config URL, and creates a session.
 
@@ -112,7 +123,10 @@ class CyperfTestRunner:
         config_url = final_resp[0]["configUrl"]
         return self.create_session(config_url=config_url, session_name=session_name)
     
-    def show_session(self, session_id: str = None) -> dict:
+    def show_session(
+        self,
+        session_id: str = None
+    ) -> dict:
         """
         Retrieves the details of a session as a dictionary.
 
@@ -135,7 +149,10 @@ class CyperfTestRunner:
             'state': session.state,
         }
     
-    def delete_session(self, session_id: str) -> None:
+    def delete_session(
+        self,
+        session_id: str
+    ) -> None:
         """
         Deletes a session by its ID. Stops the test if it is not already stopped.
 
@@ -150,7 +167,11 @@ class CyperfTestRunner:
         self.session_client.delete_session(session.id)
 
     
-    def add_application_profile_to_session(self, session_id: str = None, application_profile_name: str = 'Application Profile') -> dict:
+    def add_application_profile_to_session(
+        self,
+        session_id: str = None,
+        application_profile_name: str = 'Application Profile'
+    ) -> dict:
         """
         Adds an application profile to a session's traffic profiles.
 
@@ -163,12 +184,16 @@ class CyperfTestRunner:
         """
         session = self.session_client.get_session_by_id(session_id=session_id)
         traffic_profiles = session.config.config.traffic_profiles
-        
         traffic_profiles.append(cyperf.ApplicationProfile(Name=application_profile_name))
         traffic_profiles.update()
         return {"message": f"Application profile added to session {session_id} - {session.name}"}
     
-    def add_application_to_application_profile(self, session_id: str = None, application_name: str = 'AI LLM over Generic HTTP', application_objective_weight: int = 100) -> dict:
+    def add_application_to_application_profile(
+        self,
+        session_id: str = None,
+        application_name: str = 'AI LLM over Generic HTTP',
+        application_objective_weight: int = 100
+    ) -> dict:
         """
         Adds an application to the first application profile in a session and sets its objective weight.
 
@@ -183,45 +208,35 @@ class CyperfTestRunner:
         print("Adding the applications...")
         # TODO: Make Application name a list
         application_resources_api = ApplicationResourcesApi(self.client)
-        take = 1                                                    
-        skip = 0                                                    
-        search_col = "Name"                                         
-        search_val = application_name                                                                       
-        sort = 'Name:asc'                                           
-        api_application_resources_response = application_resources_api.get_resources_apps(take=take, 
-                                                                                          skip=skip, 
-                                                                                          search_col=search_col, 
-                                                                                          search_val=search_val, 
-                                                                                          filter_mode=None, 
-                                                                                          sort=sort)
-        
+        take = 1
+        skip = 0
+        search_col = "Name"
+        search_val = application_name
+        sort = 'Name:asc'
+        api_application_resources_response = application_resources_api.get_resources_apps(
+            take=take,
+            skip=skip,
+            search_col=search_col,
+            search_val=search_val,
+            filter_mode=None,
+            sort=sort
+        )
         app_id = api_application_resources_response.data[0].id
         external_resource_info = [cyperf.ExternalResourceInfo(externalResourceURL=app_id)]
-        
-
         config = self.session_client.get_session_config(session_id=session_id, include='Config, TrafficProfiles, Applications')
-        
-        
-        # config.config.traffic_profiles[0].applications.append(cyperf.Application(id=app_id, 
-        #                                                                          objective_weight=application_objective_weight))
-
-        # config.config.traffic_profiles[0].applications.update()
-
-       
-        api_session_response = self.session_client.start_config_add_applications(session_id, 
-                                                                                 traffic_profile_id = '1', 
-                                                                                 external_resource_info=external_resource_info)
-        
+        api_session_response = self.session_client.start_config_add_applications(session_id, traffic_profile_id='1', external_resource_info=external_resource_info)
         api_session_response.await_completion()
         for app in config.config.traffic_profiles[0].applications:
             if app.name == application_name:
                 app.objective_weight = application_objective_weight
                 app.update()
-
         print(f"Applications {application_name} added successfully. with weight {application_objective_weight}\n")
         return {"message": f"Applications {application_name} added successfully. with weight {application_objective_weight}"}
     
-    def get_all_application_for_session(self, session_id: str = None) -> list:
+    def get_all_application_for_session(
+        self,
+        session_id: str = None
+    ) -> list:
         """
         Retrieves all application names for the first application profile in a session.
 
@@ -236,32 +251,31 @@ class CyperfTestRunner:
     
 
     
-    def get_all_cyperf_applications_avaialble(self) -> tuple:
+    def get_all_cyperf_applications_avaialble(
+        self
+    ) -> tuple:
         """
         Retrieves all available CyPerf applications from the controller and writes their IDs and names to a file.
 
         Returns:
             tuple: A tuple containing a list of application IDs and a list of application names.
         """
-        # Get some applications
         application_resources_api = ApplicationResourcesApi(self.client)
-        take = None                                                    
-        skip = 0                                                    
-        search_col = None                                         
-        search_val = None                               
-        filter_mode = None                                          
-        sort = 'Name:asc'                                           
-
-        application_ids = []
-        application_names = []
-        api_application_resources_response = application_resources_api.get_resources_apps(take=take, 
-                                                                                          skip=skip, 
-                                                                                          search_col=search_col, 
-                                                                                          search_val=search_val, 
-                                                                                          filter_mode=filter_mode, 
-                                                                                          sort=sort)
+        take = None
+        skip = 0
+        search_col = None
+        search_val = None
+        filter_mode = None
+        sort = 'Name:asc'
+        api_application_resources_response = application_resources_api.get_resources_apps(
+            take=take,
+            skip=skip,
+            search_col=search_col,
+            search_val=search_val,
+            filter_mode=filter_mode,
+            sort=sort
+        )
         print(f"{len(api_application_resources_response.data)} applications found.\n")
-        
         application_ids = [app.id for app in api_application_resources_response.data]
         application_names = [app.name for app in api_application_resources_response.data]
         with open("application_cyperf_list.txt", "w") as f:
@@ -269,7 +283,11 @@ class CyperfTestRunner:
                 f.write(f"{app_id} - {app_name}\n")
         return application_ids, application_names
 
-    def add_network_element(self, session_id: str = None, number_of_ip_networks: int = 1) -> dict:
+    def add_network_element(
+        self,
+        session_id: str = None,
+        number_of_ip_networks: int = 1
+    ) -> dict:
         """
         Adds network elements to a session's configuration.
 
@@ -280,23 +298,23 @@ class CyperfTestRunner:
         Returns:
             dict: A message indicating the result of the operation.
         """
-        # Create a Network Profile
         print("Adding network elements...")
         session = self.session_client.get_session_by_id(session_id=session_id)
-        #print(cyperf.NetworkProfile(DUTNetworkSegment=[], id="1"))
         network_profiles = session.config.config.network_profiles
         network_profiles.update()
         network_profiles.append(cyperf.NetworkProfile(DUTNetworkSegment=[], id="12"))
-        network_profiles.append(cyperf.NetworkProfile(IPNetworkSegment=[], id="13"))   
+        network_profiles.append(cyperf.NetworkProfile(IPNetworkSegment=[], id="13"))
         for iface in session.config.config.network_profiles:
             print(iface.id)
         import pdb; pdb.set_trace()
         network_profiles.update()
-
         return {"message": f"IP network elements added to session {session_id} - {session.name}"}
 
     
-    def _get_configuration_url(self, config_name: str = None) -> str:
+    def _get_configuration_url(
+        self,
+        config_name: str = None
+    ) -> str:
         """
         Retrieves the configuration URL for a given configuration name.
 
@@ -307,11 +325,7 @@ class CyperfTestRunner:
             str: The configuration URL.
         """
         config_api = ConfigurationsApi(self.client)
-        config = config_api.get_configs(take=1, skip=0, 
-                                        search_col='displayName', 
-                                        search_val=config_name, 
-                                        filter_mode=None, 
-                                        sort=None)
+        config = config_api.get_configs(take=1, skip=0, search_col='displayName', search_val=config_name, filter_mode=None, sort=None)
         return config.data[0].config_url
    
     
@@ -349,9 +363,7 @@ class CyperfTestRunner:
         objective_to_be_configured = objectives_dict[primary_object_name]
         objectives_unit = objectives_dict_unit[primary_object_name]
         include = 'Config, TrafficProfiles'
-
         config = self.session_client.get_session_config(session_id=session_id, include=include)
-        
         primary_objective = config.config.traffic_profiles[0].objectives_and_timeline.primary_objective
         primary_objective.type = objective_to_be_configured
         primary_objective.timeline[1].duration = primary_objective_duration
@@ -360,7 +372,10 @@ class CyperfTestRunner:
         primary_objective.update()
         return {"message": f"Primary objective goals set for session {session_id} for {primary_object_name}"}
 
-    def get_all_primary_objectives_goals(self, session_id: str = None) -> list:
+    def get_all_primary_objectives_goals(
+        self,
+        session_id: str = None
+    ) -> list:
         """
         Retrieves all primary objective goals for a given session.
 
@@ -394,7 +409,9 @@ class CyperfTestRunner:
         return out_list
     
     
-    def get_available_agents(self) -> list:
+    def get_available_agents(
+        self
+    ) -> list:
         """
         Retrieves the available agents for the current session.
 
@@ -415,7 +432,11 @@ class CyperfTestRunner:
             agent_list.append(agent_dict)
         return agent_list
     
-    def assign_agents_to_network_elements(self, session_id: str = None, agent_map: dict = None) -> None:
+    def assign_agents_to_network_elements(
+        self,
+        session_id: str = None,
+        agent_map: dict = None
+    ) -> None:
         """
         Assigns agents to network elements for a given session.
 
@@ -657,7 +678,12 @@ class CyperfTestRunner:
         attack_profiles.update()
         return {"message": f"Attack profile added to session {session_id} - {session.name}"}
 
-    def add_attack_to_attack_profile(self, session_id: str = None, attack_profile_name: str = None, attack_name: str = None) -> None:
+    def add_attack_to_attack_profile(
+        self,
+        session_id: str = None,
+        attack_profile_name: str = 'Attack Profile',
+        attack_name: str = None
+    ) -> None:
         """
         Adds an attack to an attack profile. (Not implemented)
 
@@ -666,7 +692,32 @@ class CyperfTestRunner:
             attack_profile_name (str, optional): The name of the attack profile. Defaults to None.
             attack_name (str, optional): The name of the attack to add. Defaults to None.
         """
-        pass
+        print("Adding the applications...")
+        # TODO: Make Application name a list
+        application_resources_api = ApplicationResourcesApi(self.client)
+        take = 1
+        skip = 0
+        search_col = "Name"
+        search_val = attack_name
+        sort = 'Name:asc'
+        api_application_attacks_response = application_resources_api.get_resources_attacks(
+            take=take,
+            skip=skip,
+            search_col=search_col,
+            search_val=search_val,
+            filter_mode=None,
+            sort=sort
+        )
+        if api_application_attacks_response.data[0].id:
+            app_id = api_application_attacks_response.data[0].id
+            config = self.session_client.get_session_config(
+                session_id=session_id,
+                include='Config, TrafficProfiles, ApplicationProfiles, AttackProfiles'
+            )
+            config.config.attack_profiles[0].attacks.append(cyperf.Attack(name=attack_name))
+            # Add the Attack
+            config.config.attack_profiles[0].attacks.update()
+        return {"message": f"Attack {attack_name} added to session {session_id}"}
         
 
     def get_all_attack_for_session(self, session_id: str = None) -> list:
@@ -749,7 +800,7 @@ ctr = CyperfTestRunner()
 # a = ctr.test_network_profile()
 # print(a)
 
-ctr.set_primary_objective_goals(session_id="appsec-34778570-0e66-40d2-90d5-2c0841349924")
+# ctr.set_primary_objective_goals(session_id="appsec-34778570-0e66-40d2-90d5-2c0841349924")
 
 #print(ctr.get_all_primary_objectives_goals(session_id="appsec-34778570-0e66-40d2-90d5-2c0841349924"))
 # print(ctr.get_available_agents())
@@ -778,7 +829,9 @@ ctr.set_primary_objective_goals(session_id="appsec-34778570-0e66-40d2-90d5-2c084
 #                                                  application_name='AI LLM over Generic HTTP'))
 
 
-
+ctr.add_attack_to_attack_profile(session_id="appsec-34778570-0e66-40d2-90d5-2c0841349924", 
+                                 attack_profile_name="Attack Profile", 
+                                 attack_name="Gemini Fraud Forbidden Questions AI LLM Prompt Injection")
 """
 # Available statistics:
 # - agent-metrics-network: Network metrics for agents
