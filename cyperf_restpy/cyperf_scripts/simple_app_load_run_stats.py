@@ -13,6 +13,7 @@ from cyperf.api.statistics_api import StatisticsApi
 from cyperf.api.diagnostics_api import DiagnosticsApi
 from cyperf.api.license_servers_api import LicenseServersApi
 from cyperf.api.application_resources_api import ApplicationResourcesApi
+from cyperf.api.authorization_api import AuthorizationApi
 
 
 import urllib3; urllib3.disable_warnings()
@@ -129,7 +130,11 @@ class CyperfTestRunner:
     
     def add_application_to_application_profile(self, 
                                                session_id=None, 
-                                               application_name=None):
+                                               application_name='AI LLM over Generic HTTP',
+                                               application_objective_weight=100):
+        
+        
+        print("Adding the applications...")
         application_resources_api = ApplicationResourcesApi(self.client)
         take = 1                                                    
         skip = 0                                                    
@@ -142,8 +147,33 @@ class CyperfTestRunner:
                                                                                           search_val=search_val, 
                                                                                           filter_mode=None, 
                                                                                           sort=sort)
+        
+        app_id = api_application_resources_response.data[0].id
+        external_resource_info = [cyperf.ExternalResourceInfo(externalResourceURL=app_id)]
+        
 
+        config = self.session_client.get_session_config(session_id=session_id, include='Config, TrafficProfiles, Applications')
+        
+        
+        import pdb; pdb.set_trace()
+        # config.config.traffic_profiles[0].applications.append(cyperf.Application(id=app_id, 
+        #                                                                          objective_weight=application_objective_weight))
 
+        # config.config.traffic_profiles[0].applications.update()
+
+       
+        api_session_response = self.session_client.start_config_add_applications(session_id, 
+                                                                                 traffic_profile_id = '1', 
+                                                                                 external_resource_info=external_resource_info)
+        
+        api_session_response.await_completion()
+        for app in config.config.traffic_profiles[0].applications:
+            if app.name == application_name:
+                app.objective_weight = application_objective_weight
+                app.update()
+
+        print(f"Applications {application_name} added successfully. with weight {application_objective_weight}\n")
+        return {"message": f"Applications {application_name} added successfully. with weight {application_objective_weight}"}
     
     def get_all_cyperf_applications_avaialble(self):
         """This function returns the applications available in the session"""
@@ -187,6 +217,16 @@ class CyperfTestRunner:
         attack_profiles.append(cyperf.AttackProfile(Name=attack_profile_name))
         attack_profiles.update()
         return {"message": f"Attack profile added to session {session_id} - {session.name}"}
+
+    def add_attack_to_attack_profile(self, session_id=None, attack_profile_name=None, attack_name=None):
+        """This function adds an attack to an attack profile
+        Args:
+            session_id (str): The id of the session to add the attack to.
+            attack_profile_name (str): The name of the attack profile to add the attack to.
+            attack_name (str): The name of the attack to add.
+        """ 
+        pass
+
 
     def add_network_element(self, session_id=None, number_of_ip_networks=1):
         # Create a Network Profile
@@ -296,6 +336,7 @@ class CyperfTestRunner:
                 "objective_unit": primary_objective.timeline[1].objective_unit
             })
         return out_list
+    
     
     def get_available_agents(self):
         """
@@ -550,6 +591,8 @@ class CyperfTestRunner:
             df = df.drop(columns=['filter'])
         return df.tail(50)
 
+
+
 ctr = CyperfTestRunner()
 
 # ctr.create_session(config_name="Cyperf Empty Config")
@@ -592,7 +635,10 @@ ctr = CyperfTestRunner()
 # processed_stats = ctr.collect_test_run_stats(session_id="appsec-9780af4a-edc6-4b66-8a81-eb2abf60e716")
 # print(ctr.view_stats(processed_stats, stat_name="client-l23-throughput"))
 
-print(ctr.get_all_cyperf_applications_avaialble())
+#print(ctr.get_all_cyperf_applications_avaialble())
+# print(ctr.add_application_to_application_profile(session_id="appsec-9780af4a-edc6-4b66-8a81-eb2abf60e716", 
+#                                                  application_name='AI LLM over Generic HTTP'))
+
 
 
 """
