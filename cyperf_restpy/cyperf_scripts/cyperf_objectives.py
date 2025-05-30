@@ -51,13 +51,15 @@ class CyperfObjectives:
         objectives_unit = objectives_dict_unit[primary_object_name]
         include = 'Config, TrafficProfiles'
         config = self.session_client.get_session_config(session_id=session_id, include=include)
-        primary_objective = config.config.traffic_profiles[0].objectives_and_timeline.primary_objective
-        primary_objective.type = objective_to_be_configured
-        primary_objective.timeline[1].duration = primary_objective_duration
-        primary_objective.timeline[1].objective_value = primary_objective_goal
-        primary_objective.timeline[1].objective_unit = objectives_unit
-        primary_objective.update()
-        return {"message": f"Primary objective goals set for session {session_id} for {primary_object_name}"}
+        # Known Issue about update not working first time
+        for _ in range(2):
+            primary_objective = config.config.traffic_profiles[0].objectives_and_timeline.primary_objective
+            primary_objective.type = objective_to_be_configured
+            primary_objective.timeline[1].duration = primary_objective_duration
+            primary_objective.timeline[1].objective_value = primary_objective_goal
+            primary_objective.timeline[1].objective_unit = objectives_unit
+            primary_objective.update()
+        return self.get_all_primary_objectives_goals(session_id=session_id)
 
     def get_all_primary_objectives_goals(
         self,
@@ -94,3 +96,23 @@ class CyperfObjectives:
                 "objective_unit": primary_objective.timeline[1].objective_unit
             })
         return out_list 
+    
+    def get_all_secondary_objectives_goals(
+        self,
+        session_id: str = None
+    ) -> list:
+        """
+        Retrieves all secondary objective goals for a given session.
+        """
+        include = 'Config, TrafficProfiles'
+        config = self.session_client.get_session_config(session_id=session_id, include=include)
+        secondary_objective = config.config.traffic_profiles[0].objectives_and_timeline.secondary_objective
+        out_list = {
+                "type":  secondary_objective.type.value,
+                "objective_value": secondary_objective.objective_value,
+                "objective_unit": secondary_objective.objective_unit
+        }     
+        if out_list:
+            return out_list
+        else:
+            return "No secondary objectives found"

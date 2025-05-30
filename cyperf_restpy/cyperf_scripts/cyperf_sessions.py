@@ -17,6 +17,24 @@ class CyperfSessions:
         self.client = client
         self.session_client = SessionsApi(self.client)
 
+    def get_all_sessions(self) -> dict:
+        """
+        Get all sessions.   
+
+        Returns:
+            dict: A dictionary containing the sessions.
+        """
+        sessions_list = []
+        sessions = self.session_client.get_sessions()
+        for session in sessions:
+            sessions_list.append({
+                'id': session.id,
+                'name': session.name,
+                'config_name': session.config_name,
+                'config_url': session.config_url,
+            })
+        return sessions_list
+
     def create_session(
         self,
         config_name: str = "Cyperf Empty Config",
@@ -34,7 +52,6 @@ class CyperfSessions:
         Returns:
             dict: A dictionary containing the session ID and session name.
         """
-        api_session_instance = cyperf.SessionsApi(self.client)
         if not config_url:
             config_url = self._get_configuration_url(config_name=config_name)
         sessions = [cyperf.Session(application=None,
@@ -44,7 +61,7 @@ class CyperfSessions:
                                     name=None,
                                     owner="admin")]
         print("Creating cyperf session...")
-        api_session_response = api_session_instance.create_sessions(session=sessions)
+        api_session_response = self.session_client.create_sessions(session=sessions)
         session = api_session_response[0]
         if session_name:
             self.save_configuration(session_id=session.id, save_config_name=session_name)
@@ -114,31 +131,6 @@ class CyperfSessions:
             # self.stop_test(session)
         self.session_client.delete_session(session_id)
         return {"message": f"Session {session_id} deleted successfully"}
-
-    def add_network_element(
-        self,
-        session_id: str = None,
-        number_of_ip_networks: int = 1
-    ) -> dict:
-        """
-        Adds network elements to a session's configuration.
-
-        Args:
-            session_id (str, optional): The ID of the session to modify. Defaults to None.
-            number_of_ip_networks (int, optional): The number of IP network elements to add. Defaults to 1.
-
-        Returns:
-            dict: A message indicating the result of the operation.
-        """
-        print("Adding network elements...")
-        session = self.session_client.get_session_by_id(session_id=session_id)
-        network_profiles = session.config.config.network_profiles
-        network_profiles.append(cyperf.NetworkProfile(DUTNetworkSegment=[], id="12"))
-        network_profiles.append(cyperf.NetworkProfile(IPNetworkSegment=[], id="13"))
-        for iface in session.config.config.network_profiles:
-            print(iface.id)
-        network_profiles.update()
-        return {"message": f"IP network elements added to session {session_id} - {session.name}"}
 
     def _get_configuration_url(
         self,

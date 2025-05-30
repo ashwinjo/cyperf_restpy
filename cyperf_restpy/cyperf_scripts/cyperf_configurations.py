@@ -1,5 +1,7 @@
 import cyperf
+from cyperf.api.sessions_api import SessionsApi
 from cyperf.api.configurations_api import ConfigurationsApi
+
 
 class CyperfConfigurations:
     """
@@ -13,6 +15,7 @@ class CyperfConfigurations:
             client (cyperf.ApiClient): The CyPerf API client instance.
         """
         self.client = client
+        self.session_client = SessionsApi(self.client)
 
     def get_configuration(
         self,
@@ -28,10 +31,42 @@ class CyperfConfigurations:
             str: The configuration URL.
         """
         config_api = ConfigurationsApi(self.client)
-        config = config_api.get_configs(take=1, skip=0, search_col='displayName', search_val=config_name, filter_mode=None, sort=None)
-        return config.data[0]
+        config = config_api.get_configs(take=1, 
+                                        skip=0, 
+                                        search_col='displayName', 
+                                        search_val=config_name, 
+                                        filter_mode=None,
+                                        sort=None)
+        print(config.data[0])
+        return {"config_name": config.data[0].display_name, 
+                "config_url": config.data[0].config_url,
+                "config_id": config.data[0].id}
+    
+    def get_keyword_based_configuration_match(
+        self,
+        config_name: str = None
+    ) -> str:
+        """
+        Retrieves the configuration URL for a given configuration name.
 
-    def save_configuration(self, session_client, session_id: str = None, save_config_name: str = None) -> dict:
+        Args:
+            config_name (str, optional): The name of the configuration. Defaults to None.
+
+        Returns:
+            str: The configuration URL.
+        """
+        config_api = ConfigurationsApi(self.client)
+        config = config_api.get_configs(take=1000, skip=0, search_col='displayName', 
+                                        search_val=config_name, 
+                                        filter_mode=None,
+                                        sort=None)
+        import pdb; pdb.set_trace()
+        return {"number_of_configs": len(config.data), 
+                "list_of_matching_configs": [ {"config_name": c.display_name, 
+                "config_url": c.config_url,
+                "config_id": c.id} for c in config.data]}
+
+    def save_configuration(self, session_id: str = None, save_config_name: str = None) -> dict:
         """
         Saves the configuration for a given session.
 
@@ -45,11 +80,14 @@ class CyperfConfigurations:
         """
         save_config_operation = cyperf.SaveConfigOperation()
         save_config_operation.name = save_config_name
+
         print("Saving the configuration...")
-        api_save_config_response = session_client.start_session_config_save(session_id, save_config_operation=save_config_operation)
+        api_save_config_response = self.session_client.start_session_config_save(session_id, save_config_operation=save_config_operation)
         saving_response = api_save_config_response.await_completion()
+        
         print("Configuration saved successfully.\n")
         config_id = saving_response["id"]
+        
         return {"message": f"Configuration saved for session {session_id} with id {config_id}"}
 
     def export_configuration(self, session_client, session_id: str = None, export_config_name: str = None) -> dict:
@@ -64,7 +102,7 @@ class CyperfConfigurations:
         Returns:
             dict: A message indicating the result of the operation.
         """
-        config = session_client.get_session_config(session_id=session_id, include='Config')
+        config = self.session_client.get_session_config(session_id=session_id, include='Config')
         api_configurations_instance = ConfigurationsApi(self.client)
         export_all_operation = cyperf.ExportAllOperation(configIds=[cyperf.ConfigId(id=config.template_id)])
         api_configurations_response = api_configurations_instance.start_configs_export_all(export_all_operation=export_all_operation)

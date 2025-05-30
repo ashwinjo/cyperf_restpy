@@ -71,7 +71,7 @@ class CyperfApplications:
         )
         app_id = api_application_resources_response.data[0].id
         external_resource_info = [cyperf.ExternalResourceInfo(externalResourceURL=app_id)]
-        config = self.session_client.get_session_config(session_id=session_id, include='Config, TrafficProfiles, Applications')
+        config = self.session_client.get_session_config(session_id=session_id, include='Config, TrafficProfiles, ApplicationProfiles, Applications')
         api_session_response = self.session_client.start_config_add_applications(session_id, traffic_profile_id='1', external_resource_info=external_resource_info)
         api_session_response.await_completion()
         for app in config.config.traffic_profiles[0].applications:
@@ -98,7 +98,8 @@ class CyperfApplications:
         return [app.name for app in session.config.config.traffic_profiles[0].applications]
 
     def get_all_cyperf_applications_avaialble(
-        self
+        self,
+        keyword: str = None
     ) -> tuple:
         """
         Retrieves all available CyPerf applications from the controller and writes their IDs and names to a file.
@@ -109,8 +110,11 @@ class CyperfApplications:
         application_resources_api = ApplicationResourcesApi(self.client)
         take = None
         skip = 0
-        search_col = None
-        search_val = None
+        search_col = 'Name'
+        if keyword:
+            search_val = keyword
+        else:
+            search_val = None
         filter_mode = None
         sort = 'Name:asc'
         api_application_resources_response = application_resources_api.get_resources_apps(
@@ -122,9 +126,38 @@ class CyperfApplications:
             sort=sort
         )
         print(f"{len(api_application_resources_response.data)} applications found.\n")
+
         application_ids = [app.id for app in api_application_resources_response.data]
         application_names = [app.name for app in api_application_resources_response.data]
-        with open("application_cyperf_list.txt", "w") as f:
-            for app_id, app_name in zip(application_ids, application_names):
-                f.write(f"{app_id} - {app_name}\n")
-        return application_ids, application_names 
+        application_descriptions = [app.description for app in api_application_resources_response.data]
+
+        application_list = [{"app_id": app_id, "app_name": app_name, "app_description": app_description} for app_id, app_name, app_description in zip(application_ids, application_names, application_descriptions)]
+        
+        return application_list
+    
+
+    def add_multiple_applications_to_session(
+        self,
+        session_id: str = None,
+        application_list: list = None,
+        keyword: str = None
+    ) -> dict:
+        """
+        Adds applications to a session.
+        """
+
+        if keyword:
+            application_list = self.get_all_cyperf_applications_avaialble(keyword=keyword)
+            message = f"Added {len(application_list)} applications to session {session_id}"
+        else:
+            message = f"Added {len(application_list)} applications to session {session_id}"
+        
+        for app in application_list:
+            self.add_application_to_application_profile(session_id=session_id, 
+                                                        application_name=app["app_name"], 
+                                                        application_objective_weight=100)
+            
+        
+        return {"message": message, 
+                "applications": self.get_all_application_for_session(session_id=session_id)}
+        
