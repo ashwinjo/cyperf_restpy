@@ -133,7 +133,6 @@ class CyperfSessions:
         print("Adding network elements...")
         session = self.session_client.get_session_by_id(session_id=session_id)
         network_profiles = session.config.config.network_profiles
-        network_profiles.update()
         network_profiles.append(cyperf.NetworkProfile(DUTNetworkSegment=[], id="12"))
         network_profiles.append(cyperf.NetworkProfile(IPNetworkSegment=[], id="13"))
         for iface in session.config.config.network_profiles:
