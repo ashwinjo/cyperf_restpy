@@ -13,7 +13,8 @@ Here's a basic example of how to use the CyPerf REST Python Client:
    # Initialize the client
    auth = CyperfAuthorization(
        controller_ip="your_controller_ip",
-       refresh_token="your_refresh_token"
+       refresh_token="your_refresh_token",
+       password="cyperfpasswd"
    )
    
    # Get the API client
