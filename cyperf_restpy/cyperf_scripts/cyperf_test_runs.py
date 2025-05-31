@@ -14,7 +14,6 @@ class CyperfTestRuns:
             client (cyperf.ApiClient): The CyPerf API client instance.
         """
         self.client = client
-        self.session_client = SessionsApi(self.client)
 
     def start_test_run(
         self,

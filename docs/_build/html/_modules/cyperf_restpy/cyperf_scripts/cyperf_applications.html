@@ -1,0 +1,288 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cyperf_restpy.cyperf_scripts.cyperf_applications &mdash; CyPerf REST Python Client  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            CyPerf REST Python Client
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage.html#sample-scripts">Sample Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_reference.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">CyPerf REST Python Client</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">cyperf_restpy.cyperf_scripts.cyperf_applications</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for cyperf_restpy.cyperf_scripts.cyperf_applications</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">cyperf</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cyperf.api.sessions_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">SessionsApi</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cyperf.api.application_resources_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">ApplicationResourcesApi</span>
+
+<div class="viewcode-block" id="CyperfApplications">
+<a class="viewcode-back" href="../../../cyperf_applications.html#cyperf_restpy.cyperf_scripts.cyperf_applications.CyperfApplications">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">CyperfApplications</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Manages application profiles and application assignment in CyPerf sessions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="CyperfApplications.__init__">
+<a class="viewcode-back" href="../../../cyperf_applications.html#cyperf_restpy.cyperf_scripts.cyperf_applications.CyperfApplications.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">cyperf</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the CyperfApplications class with a CyPerf API client.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            client (cyperf.ApiClient): The CyPerf API client instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">client</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">session_client</span> <span class="o">=</span> <span class="n">SessionsApi</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CyperfApplications.add_application_profile_to_session">
+<a class="viewcode-back" href="../../../cyperf_applications.html#cyperf_restpy.cyperf_scripts.cyperf_applications.CyperfApplications.add_application_profile_to_session">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_application_profile_to_session</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">session_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">application_profile_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;Application Profile&#39;</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds an application profile to a session&#39;s traffic profiles.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            session_id (str, optional): The ID of the session to add the application profile to. Defaults to None.</span>
+<span class="sd">            application_profile_name (str, optional): The name of the application profile. Defaults to &#39;Application Profile&#39;.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: A message indicating the result of the operation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session_client</span><span class="o">.</span><span class="n">get_session_by_id</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="n">session_id</span><span class="p">)</span>
+        <span class="n">traffic_profiles</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">traffic_profiles</span>
+        <span class="n">traffic_profiles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cyperf</span><span class="o">.</span><span class="n">ApplicationProfile</span><span class="p">(</span><span class="n">Name</span><span class="o">=</span><span class="n">application_profile_name</span><span class="p">))</span>
+        <span class="n">traffic_profiles</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Application profile added to session </span><span class="si">{</span><span class="n">session_id</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">session</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="CyperfApplications.add_application_to_application_profile">
+<a class="viewcode-back" href="../../../cyperf_applications.html#cyperf_restpy.cyperf_scripts.cyperf_applications.CyperfApplications.add_application_to_application_profile">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_application_to_application_profile</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">session_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">application_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;AI LLM over Generic HTTP&#39;</span><span class="p">,</span>
+        <span class="n">application_objective_weight</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds an application to the first application profile in a session and sets its objective weight.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            session_id (str, optional): The ID of the session to modify. Defaults to None.</span>
+<span class="sd">            application_name (str, optional): The name of the application to add. Defaults to &#39;AI LLM over Generic HTTP&#39;.</span>
+<span class="sd">            application_objective_weight (int, optional): The objective weight for the application. Defaults to 100.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: A message indicating the result of the operation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Adding the applications...&quot;</span><span class="p">)</span>
+        <span class="n">application_resources_api</span> <span class="o">=</span> <span class="n">ApplicationResourcesApi</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">)</span>
+        <span class="n">take</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">skip</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">search_col</span> <span class="o">=</span> <span class="s2">&quot;Name&quot;</span>
+        <span class="n">search_val</span> <span class="o">=</span> <span class="n">application_name</span>
+        <span class="n">sort</span> <span class="o">=</span> <span class="s1">&#39;Name:asc&#39;</span>
+        <span class="n">api_application_resources_response</span> <span class="o">=</span> <span class="n">application_resources_api</span><span class="o">.</span><span class="n">get_resources_apps</span><span class="p">(</span>
+            <span class="n">take</span><span class="o">=</span><span class="n">take</span><span class="p">,</span>
+            <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span>
+            <span class="n">search_col</span><span class="o">=</span><span class="n">search_col</span><span class="p">,</span>
+            <span class="n">search_val</span><span class="o">=</span><span class="n">search_val</span><span class="p">,</span>
+            <span class="n">filter_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">sort</span><span class="o">=</span><span class="n">sort</span>
+        <span class="p">)</span>
+        <span class="n">app_id</span> <span class="o">=</span> <span class="n">api_application_resources_response</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">id</span>
+        <span class="n">external_resource_info</span> <span class="o">=</span> <span class="p">[</span><span class="n">cyperf</span><span class="o">.</span><span class="n">ExternalResourceInfo</span><span class="p">(</span><span class="n">externalResourceURL</span><span class="o">=</span><span class="n">app_id</span><span class="p">)]</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session_client</span><span class="o">.</span><span class="n">get_session_config</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="n">session_id</span><span class="p">,</span> <span class="n">include</span><span class="o">=</span><span class="s1">&#39;Config, TrafficProfiles, ApplicationProfiles, Applications&#39;</span><span class="p">)</span>
+        <span class="n">api_session_response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session_client</span><span class="o">.</span><span class="n">start_config_add_applications</span><span class="p">(</span><span class="n">session_id</span><span class="p">,</span> <span class="n">traffic_profile_id</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">external_resource_info</span><span class="o">=</span><span class="n">external_resource_info</span><span class="p">)</span>
+        <span class="n">api_session_response</span><span class="o">.</span><span class="n">await_completion</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">config</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">traffic_profiles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">applications</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">app</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">application_name</span><span class="p">:</span>
+                <span class="n">app</span><span class="o">.</span><span class="n">objective_weight</span> <span class="o">=</span> <span class="n">application_objective_weight</span>
+                <span class="n">app</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Applications </span><span class="si">{</span><span class="n">application_name</span><span class="si">}</span><span class="s2"> added successfully. with weight </span><span class="si">{</span><span class="n">application_objective_weight</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Applications </span><span class="si">{</span><span class="n">application_name</span><span class="si">}</span><span class="s2"> added successfully. with weight </span><span class="si">{</span><span class="n">application_objective_weight</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="CyperfApplications.get_all_application_for_session">
+<a class="viewcode-back" href="../../../cyperf_applications.html#cyperf_restpy.cyperf_scripts.cyperf_applications.CyperfApplications.get_all_application_for_session">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_all_application_for_session</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">session_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieves all application names for the first application profile in a session.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            session_id (str, optional): The ID of the session to query. Defaults to None.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list: A list of application names in the session.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session_client</span><span class="o">.</span><span class="n">get_session_by_id</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="n">session_id</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">app</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">session</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">traffic_profiles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">applications</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="CyperfApplications.get_all_cyperf_applications_avaialble">
+<a class="viewcode-back" href="../../../cyperf_applications.html#cyperf_restpy.cyperf_scripts.cyperf_applications.CyperfApplications.get_all_cyperf_applications_avaialble">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_all_cyperf_applications_avaialble</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">keyword</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieves all available CyPerf applications from the controller and writes their IDs and names to a file.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple: A tuple containing a list of application IDs and a list of application names.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">application_resources_api</span> <span class="o">=</span> <span class="n">ApplicationResourcesApi</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">)</span>
+        <span class="n">take</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">skip</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">search_col</span> <span class="o">=</span> <span class="s1">&#39;Name&#39;</span>
+        <span class="k">if</span> <span class="n">keyword</span><span class="p">:</span>
+            <span class="n">search_val</span> <span class="o">=</span> <span class="n">keyword</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">search_val</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">filter_mode</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">sort</span> <span class="o">=</span> <span class="s1">&#39;Name:asc&#39;</span>
+        <span class="n">api_application_resources_response</span> <span class="o">=</span> <span class="n">application_resources_api</span><span class="o">.</span><span class="n">get_resources_apps</span><span class="p">(</span>
+            <span class="n">take</span><span class="o">=</span><span class="n">take</span><span class="p">,</span>
+            <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span>
+            <span class="n">search_col</span><span class="o">=</span><span class="n">search_col</span><span class="p">,</span>
+            <span class="n">search_val</span><span class="o">=</span><span class="n">search_val</span><span class="p">,</span>
+            <span class="n">filter_mode</span><span class="o">=</span><span class="n">filter_mode</span><span class="p">,</span>
+            <span class="n">sort</span><span class="o">=</span><span class="n">sort</span>
+        <span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">api_application_resources_response</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="si">}</span><span class="s2"> applications found.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">application_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">app</span><span class="o">.</span><span class="n">id</span> <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">api_application_resources_response</span><span class="o">.</span><span class="n">data</span><span class="p">]</span>
+        <span class="n">application_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">app</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">api_application_resources_response</span><span class="o">.</span><span class="n">data</span><span class="p">]</span>
+        <span class="n">application_descriptions</span> <span class="o">=</span> <span class="p">[</span><span class="n">app</span><span class="o">.</span><span class="n">description</span> <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">api_application_resources_response</span><span class="o">.</span><span class="n">data</span><span class="p">]</span>
+
+        <span class="n">application_list</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;app_id&quot;</span><span class="p">:</span> <span class="n">app_id</span><span class="p">,</span> <span class="s2">&quot;app_name&quot;</span><span class="p">:</span> <span class="n">app_name</span><span class="p">,</span> <span class="s2">&quot;app_description&quot;</span><span class="p">:</span> <span class="n">app_description</span><span class="p">}</span> <span class="k">for</span> <span class="n">app_id</span><span class="p">,</span> <span class="n">app_name</span><span class="p">,</span> <span class="n">app_description</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">application_ids</span><span class="p">,</span> <span class="n">application_names</span><span class="p">,</span> <span class="n">application_descriptions</span><span class="p">)]</span>
+        
+        <span class="k">return</span> <span class="n">application_list</span></div>
+
+    
+
+<div class="viewcode-block" id="CyperfApplications.add_multiple_applications_to_session">
+<a class="viewcode-back" href="../../../cyperf_applications.html#cyperf_restpy.cyperf_scripts.cyperf_applications.CyperfApplications.add_multiple_applications_to_session">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_multiple_applications_to_session</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">session_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">application_list</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">keyword</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds applications to a session.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">keyword</span><span class="p">:</span>
+            <span class="n">application_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_all_cyperf_applications_avaialble</span><span class="p">(</span><span class="n">keyword</span><span class="o">=</span><span class="n">keyword</span><span class="p">)</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Added </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">application_list</span><span class="p">)</span><span class="si">}</span><span class="s2"> applications to session </span><span class="si">{</span><span class="n">session_id</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Added </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">application_list</span><span class="p">)</span><span class="si">}</span><span class="s2"> applications to session </span><span class="si">{</span><span class="n">session_id</span><span class="si">}</span><span class="s2">&quot;</span>
+        
+        <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">application_list</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_application_to_application_profile</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="n">session_id</span><span class="p">,</span> 
+                                                        <span class="n">application_name</span><span class="o">=</span><span class="n">app</span><span class="p">[</span><span class="s2">&quot;app_name&quot;</span><span class="p">],</span> 
+                                                        <span class="n">application_objective_weight</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+            
+        
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="n">message</span><span class="p">,</span> 
+                <span class="s2">&quot;applications&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_all_application_for_session</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="n">session_id</span><span class="p">)}</span></div>
+</div>
+
+        
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

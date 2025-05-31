@@ -8,6 +8,8 @@ It provides a set of tools for managing test configurations, running tests, and 
    :maxdepth: 2
    :caption: Contents:
 
+   overview
+   cyperf-deployment-templates
    installation
    usage
    api_reference
