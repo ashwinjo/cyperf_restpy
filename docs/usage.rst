@@ -105,3 +105,19 @@ test_cyperf_tests.py
    :language: python
    :caption: Sample: Test Run Management
    :lines: 1-29
+
+
+test_cyperf_reports.py
+---------------------
+.. literalinclude:: ../cyperf_restpy/sample_scripts/test_cyperf_reports.py
+   :language: python
+   :caption: Sample: Reports Management
+   :lines: 1-33
+
+
+test_cyperf_results.py
+---------------------
+.. literalinclude:: ../cyperf_restpy/sample_scripts/test_cyperf_results.py
+   :language: python
+   :caption: Sample: Results Management
+   :lines: 1-37

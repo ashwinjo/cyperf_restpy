@@ -10,6 +10,8 @@ This section provides detailed documentation for all the modules and classes in 
    cyperf_applications
    cyperf_agents
    cyperf_attacks
+   cyperf_results
+   cyperf_reports
    cyperf_configurations
    cyperf_network_profile
    cyperf_objectives

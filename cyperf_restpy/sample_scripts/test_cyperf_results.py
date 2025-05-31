@@ -1,4 +1,4 @@
-"""Test script for Cyperf Traffic Profile API."""
+"""Test script for Cyperf Results API."""
 
 import sys
 import os
@@ -7,27 +7,27 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from cyperf_scripts.cyperf_authorization import CyperfAuthorization
-from cyperf_scripts.cyperf_traffic_profile import CyperfTrafficProfile
-from cyperf_scripts.cyperf_applications import CyperfApplications
+from cyperf_scripts.cyperf_results import CyperfResults
 import urllib3
 
 urllib3.disable_warnings()
 
 def main() -> None:
-    """Main function to test Cyperf Traffic Profile API."""
+    """Main function to test Cyperf Results API."""
     try:
         cyperf_client = CyperfAuthorization(
             controller_ip="3.141.193.119",
             refresh_token=None,
             username="admin",
-            password="mypassword"
+            password="CyPerf&Keysight#1"
         ).get_cyperf_client()
-        cyperf_traffic_profile = CyperfTrafficProfile(cyperf_client)
-        result = cyperf_traffic_profile.get_traffic_profile(
-            session_id="appsec-d09bc450-8472-4e9c-9573-5859ae5ced57"
+        cyperf_results = CyperfResults(cyperf_client)
+        result = cyperf_results.start_result_generate_all(
+            session_id="appsec-9d25e7bb-f165-495e-82b2-278d6c1573d2"
         )
-        result = cyperf_traffic_profile.get_traffic_profile_applications(
-            session_id="appsec-d09bc450-8472-4e9c-9573-5859ae5ced57"
+        print(result)
+        result = cyperf_results.start_result_generate_results(
+            session_id="appsec-9d25e7bb-f165-495e-82b2-278d6c1573d2"
         )
         print(result)
     except Exception as e:
