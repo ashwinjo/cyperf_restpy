@@ -1,0 +1,560 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Usage Guide &mdash; CyPerf REST Python Client  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API Reference" href="api_reference.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            CyPerf REST Python Client
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basic-usage">Basic Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#sample-scripts">Sample Scripts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#test-cyperf-applications-py">test_cyperf_applications.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-cyperf-agents-py">test_cyperf_agents.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-cyperf-statistics-py">test_cyperf_statistics.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-cyperf-sessions-py">test_cyperf_sessions.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-cyperf-network-profile-py">test_cyperf_network_profile.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-cyperf-objectives-py">test_cyperf_objectives.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-cyperf-traffic-profile-py">test_cyperf_traffic_profile.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-cyperf-configurations-py">test_cyperf_configurations.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-cyperf-tests-py">test_cyperf_tests.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CyPerf REST Python Client</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Usage Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/usage.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="usage-guide">
+<h1>Usage Guide<a class="headerlink" href="#usage-guide" title="Link to this heading"></a></h1>
+<section id="basic-usage">
+<h2>Basic Usage<a class="headerlink" href="#basic-usage" title="Link to this heading"></a></h2>
+<p>Here’s a basic example of how to use the CyPerf REST Python Client:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">cyperf_scripts.cyperf_authorization</span><span class="w"> </span><span class="kn">import</span> <span class="n">CyperfAuthorization</span>
+
+<span class="c1"># Initialize the client</span>
+<span class="n">auth</span> <span class="o">=</span> <span class="n">CyperfAuthorization</span><span class="p">(</span>
+    <span class="n">controller_ip</span><span class="o">=</span><span class="s2">&quot;your_controller_ip&quot;</span><span class="p">,</span>
+    <span class="n">refresh_token</span><span class="o">=</span><span class="s2">&quot;your_refresh_token&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Get the API client</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">auth</span><span class="o">.</span><span class="n">get_cyperf_client</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="sample-scripts">
+<h1>Sample Scripts<a class="headerlink" href="#sample-scripts" title="Link to this heading"></a></h1>
+<p>The following sample scripts demonstrate how to use various features of the CyPerf REST Python Client. To avoid import issues, always run these scripts as a module from the project root:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/Users/ashwjosh/Desktop/cyperf_restpy
+python<span class="w"> </span>-m<span class="w"> </span>cyperf_restpy.sample_scripts.&lt;script_name&gt;
+</pre></div>
+</div>
+<p>Replace <cite>&lt;script_name&gt;</cite> with the script you want to run (e.g., <cite>test_cyperf_applications</cite>).</p>
+<p>—</p>
+<section id="test-cyperf-applications-py">
+<h2>test_cyperf_applications.py<a class="headerlink" href="#test-cyperf-applications-py" title="Link to this heading"></a></h2>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Sample: Application Management</span><a class="headerlink" href="#id1" title="Link to this code"></a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="c1"># Ensure the parent directory is in sys.path for absolute imports</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))))</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">cyperf_scripts.cyperf_authorization</span><span class="w"> </span><span class="kn">import</span> <span class="n">CyperfAuthorization</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cyperf_scripts.cyperf_applications</span><span class="w"> </span><span class="kn">import</span> <span class="n">CyperfApplications</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib3</span><span class="p">;</span> <span class="n">urllib3</span><span class="o">.</span><span class="n">disable_warnings</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">cyperf_client</span> <span class="o">=</span> <span class="n">CyperfAuthorization</span><span class="p">(</span><span class="n">controller_ip</span><span class="o">=</span><span class="s2">&quot;3.141.193.119&quot;</span><span class="p">,</span> 
+                                        <span class="n">refresh_token</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span> 
+                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;CyPerf&amp;Keysight#1&quot;</span>
+                                        <span class="p">)</span><span class="o">.</span><span class="n">get_cyperf_client</span><span class="p">()</span>
+    
+    
+    <span class="n">cyperf_applications</span> <span class="o">=</span> <span class="n">CyperfApplications</span><span class="p">(</span><span class="n">cyperf_client</span><span class="p">)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cyperf_applications</span><span class="o">.</span><span class="n">get_all_application_for_session</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="s2">&quot;appsec-d09bc450-8472-4e9c-9573-5859ae5ced57&quot;</span><span class="p">)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cyperf_applications</span><span class="o">.</span><span class="n">add_application_profile_to_session</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="s2">&quot;appsec-d09bc450-8472-4e9c-9573-5859ae5ced57&quot;</span><span class="p">,</span> 
+                                                                    <span class="n">application_profile_name</span><span class="o">=</span><span class="s2">&quot;Shaktimaan&quot;</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cyperf_applications</span><span class="o">.</span><span class="n">add_application_to_application_profile</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="s2">&quot;appsec-d09bc450-8472-4e9c-9573-5859ae5ced57&quot;</span><span class="p">,</span> 
+                                                                        <span class="n">application_name</span><span class="o">=</span><span class="s1">&#39;AI LLM over Generic HTTP&#39;</span><span class="p">,</span> 
+                                                                        <span class="n">application_objective_weight</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cyperf_applications</span><span class="o">.</span><span class="n">get_all_cyperf_applications_avaialble</span><span class="p">(</span><span class="n">keyword</span><span class="o">=</span><span class="s2">&quot;AI&quot;</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cyperf_applications</span><span class="o">.</span><span class="n">add_multiple_applications_to_session</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="s2">&quot;appsec-d09bc450-8472-4e9c-9573-5859ae5ced57&quot;</span><span class="p">,</span>
+                                                                      <span class="n">application_list</span><span class="o">=</span><span class="p">[],</span>
+                                                                      <span class="n">keyword</span><span class="o">=</span><span class="s2">&quot;Zoom&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="test-cyperf-agents-py">
+<h2>test_cyperf_agents.py<a class="headerlink" href="#test-cyperf-agents-py" title="Link to this heading"></a></h2>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Sample: Agent Management</span><a class="headerlink" href="#id2" title="Link to this code"></a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="c1"># Ensure the parent directory is in sys.path for absolute imports</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))))</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">cyperf_scripts.cyperf_authorization</span><span class="w"> </span><span class="kn">import</span> <span class="n">CyperfAuthorization</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cyperf_scripts.cyperf_agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">CyperfAgents</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cyperf_scripts.cyperf_network_profile</span><span class="w"> </span><span class="kn">import</span> <span class="n">CyperfNetworkProfile</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib3</span><span class="p">;</span> <span class="n">urllib3</span><span class="o">.</span><span class="n">disable_warnings</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">cyperf_client</span> <span class="o">=</span> <span class="n">CyperfAuthorization</span><span class="p">(</span><span class="n">controller_ip</span><span class="o">=</span><span class="s2">&quot;3.141.193.119&quot;</span><span class="p">,</span> 
+                                        <span class="n">refresh_token</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span> 
+                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;CyPerf&amp;Keysight#1&quot;</span>
+                                        <span class="p">)</span><span class="o">.</span><span class="n">get_cyperf_client</span><span class="p">()</span>
+    
+    <span class="n">cyperf_agents</span> <span class="o">=</span> <span class="n">CyperfAgents</span><span class="p">(</span><span class="n">cyperf_client</span><span class="p">)</span>
+    <span class="n">cyperf_network_profile</span> <span class="o">=</span> <span class="n">CyperfNetworkProfile</span><span class="p">(</span><span class="n">cyperf_client</span><span class="p">)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cyperf_network_profile</span><span class="o">.</span><span class="n">get_ip_segments_details</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="s2">&quot;appsec-d09bc450-8472-4e9c-9573-5859ae5ced57&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cyperf_agents</span><span class="o">.</span><span class="n">get_available_agents</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+    <span class="n">agent_map</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;IP Network 1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2bd2daa0-cac6-4191-9a8b-2d2b3f646d1e&#39;</span><span class="p">,</span> <span class="s1">&#39;172.16.2.11&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;IP Network 2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;f1915655-6678-4d96-a0b7-da3c0c6dd95c&#39;</span><span class="p">,</span> <span class="s1">&#39;172.16.0.3&#39;</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cyperf_agents</span><span class="o">.</span><span class="n">assign_agents_to_network_elements</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="s2">&quot;appsec-d09bc450-8472-4e9c-9573-5859ae5ced57&quot;</span><span class="p">,</span> 
+                                                             <span class="n">agent_map</span><span class="o">=</span><span class="n">agent_map</span><span class="p">)</span>
+    
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cyperf_agents</span><span class="o">.</span><span class="n">unassign_all_agents_for_session</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="s2">&quot;appsec-d09bc450-8472-4e9c-9573-5859ae5ced57&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="test-cyperf-statistics-py">
+<h2>test_cyperf_statistics.py<a class="headerlink" href="#test-cyperf-statistics-py" title="Link to this heading"></a></h2>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Sample: Statistics Collection</span><a class="headerlink" href="#id3" title="Link to this code"></a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="c1"># Ensure the parent directory is in sys.path for absolute imports</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))))</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">cyperf_scripts.cyperf_authorization</span><span class="w"> </span><span class="kn">import</span> <span class="n">CyperfAuthorization</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cyperf_scripts.cyperf_statistics</span><span class="w"> </span><span class="kn">import</span> <span class="n">CyperfStatistics</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib3</span><span class="p">;</span> <span class="n">urllib3</span><span class="o">.</span><span class="n">disable_warnings</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">cyperf_client</span> <span class="o">=</span> <span class="n">CyperfAuthorization</span><span class="p">(</span><span class="n">controller_ip</span><span class="o">=</span><span class="s2">&quot;3.141.193.119&quot;</span><span class="p">,</span> 
+                                        <span class="n">refresh_token</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span> 
+                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;CyPerf&amp;Keysight#1&quot;</span>
+                                        <span class="p">)</span><span class="o">.</span><span class="n">get_cyperf_client</span><span class="p">()</span>
+    
+    <span class="n">cyperf_statistics</span> <span class="o">=</span> <span class="n">CyperfStatistics</span><span class="p">(</span><span class="n">cyperf_client</span><span class="p">)</span>
+    <span class="c1"># result = cyperf_statistics.show_available_stats(session_id=&quot;appsec-9d25e7bb-f165-495e-82b2-278d6c1573d2&quot;)</span>
+    <span class="c1"># print(result)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cyperf_statistics</span><span class="o">.</span><span class="n">collect_test_run_stats</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="s2">&quot;appsec-9d25e7bb-f165-495e-82b2-278d6c1573d2&quot;</span><span class="p">,</span>
+                                                      <span class="n">stats_name</span><span class="o">=</span><span class="s2">&quot;http-server-application&quot;</span><span class="p">)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cyperf_statistics</span><span class="o">.</span><span class="n">view_stats</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="s2">&quot;appsec-9d25e7bb-f165-495e-82b2-278d6c1573d2&quot;</span><span class="p">,</span>
+                                          <span class="n">processed_stats</span><span class="o">=</span><span class="n">result</span><span class="p">,</span>
+                                          <span class="n">stat_name</span><span class="o">=</span><span class="s2">&quot;http-server-application&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+    
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="test-cyperf-sessions-py">
+<h2>test_cyperf_sessions.py<a class="headerlink" href="#test-cyperf-sessions-py" title="Link to this heading"></a></h2>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Sample: Session Management</span><a class="headerlink" href="#id4" title="Link to this code"></a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pprint</span><span class="w"> </span><span class="kn">import</span> <span class="n">pprint</span>
+
+<span class="c1"># Ensure the parent directory is in sys.path for absolute imports</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))))</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">cyperf_scripts.cyperf_authorization</span><span class="w"> </span><span class="kn">import</span> <span class="n">CyperfAuthorization</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cyperf_scripts.cyperf_sessions</span><span class="w"> </span><span class="kn">import</span> <span class="n">CyperfSessions</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cyperf_scripts.cyperf_configurations</span><span class="w"> </span><span class="kn">import</span> <span class="n">CyperfConfigurations</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib3</span><span class="p">;</span> <span class="n">urllib3</span><span class="o">.</span><span class="n">disable_warnings</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># Controller Authentication</span>
+    <span class="n">cyperf_client</span> <span class="o">=</span> <span class="n">CyperfAuthorization</span><span class="p">(</span><span class="n">controller_ip</span><span class="o">=</span><span class="s2">&quot;3.141.193.119&quot;</span><span class="p">,</span> 
+                                        <span class="n">refresh_token</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span> 
+                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;CyPerf&amp;Keysight#1&quot;</span>
+                                        <span class="p">)</span><span class="o">.</span><span class="n">get_cyperf_client</span><span class="p">()</span>
+
+    <span class="n">cyperf_sessions</span> <span class="o">=</span> <span class="n">CyperfSessions</span><span class="p">(</span><span class="n">cyperf_client</span><span class="p">)</span>
+    <span class="n">cyperf_configurations</span> <span class="o">=</span> <span class="n">CyperfConfigurations</span><span class="p">(</span><span class="n">cyperf_client</span><span class="p">)</span>
+
+    <span class="c1"># Create a session Blank Config</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cyperf_sessions</span><span class="o">.</span><span class="n">create_session</span><span class="p">(</span><span class="n">config_name</span><span class="o">=</span><span class="s2">&quot;Cyperf Empty Config&quot;</span><span class="p">,</span> <span class="n">session_name</span><span class="o">=</span><span class="s2">&quot;IntegrationTestSession&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    {&#39;session_id&#39;: &#39;appsec-e4d87134-8843-461c-b40e-ea07ca5d8c82&#39;, &#39;session_name&#39;: &#39;178 CyPerf Empty Config&#39;}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Create a session existing config</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cyperf_sessions</span><span class="o">.</span><span class="n">create_session</span><span class="p">(</span><span class="n">config_name</span><span class="o">=</span><span class="s2">&quot;AppMix-Users&quot;</span><span class="p">,</span> 
+                                            <span class="n">session_name</span><span class="o">=</span><span class="s2">&quot;IntegrationTestSessionLoaded&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    {&#39;session_id&#39;: &#39;appsec-0e5cbcef-08b8-4c0c-a8fb-30a699310c64&#39;, &#39;session_name&#39;: &#39;179 AppMix-Users&#39;}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+    <span class="c1"># Create a session from zip file</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cyperf_configurations</span><span class="o">.</span><span class="n">load_configuration_from_zip</span><span class="p">(</span><span class="n">configuration_file</span><span class="o">=</span><span class="s2">&quot;/Users/ashwjosh/Downloads/SU-obj-APPMIX-with-10-apps-pdff.zip&quot;</span><span class="p">,</span> 
+                                                <span class="n">session_name</span><span class="o">=</span><span class="s2">&quot;Ashwin-SU-obj-APPMIX-with-10-apps-pdff&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    {&#39;session_id&#39;: &#39;appsec-a46cd243-ef72-42a5-b567-1b846bf402d5&#39;, </span>
+<span class="sd">    &#39;session_name&#39;: &#39;181 SU-obj-APPMIX-with-10-apps-pdff (copy from May 29 21:15:49)&#39;}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Import configuration</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cyperf_configurations</span><span class="o">.</span><span class="n">import_configuration</span><span class="p">(</span><span class="n">cofig_file_path</span><span class="o">=</span><span class="s2">&quot;/Users/ashwjosh/Downloads/SU-obj-APPMIX-with-10-apps-pdff.zip&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+
+    <span class="c1"># Show session</span>
+    <span class="n">cyperf_sessions</span><span class="o">.</span><span class="n">show_session</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="s2">&quot;appsec-e4d87134-8843-461c-b40e-ea07ca5d8c82&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;{&#39;id&#39;: &#39;appsec-e4d87134-8843-461c-b40e-ea07ca5d8c82&#39;, </span>
+<span class="sd">    &#39;name&#39;: &#39;178 IntegrationTestSession&#39;, </span>
+<span class="sd">    &#39;application&#39;: &#39;appsec&#39;, </span>
+<span class="sd">    &#39;config_name&#39;: &#39;IntegrationTestSession&#39;, </span>
+<span class="sd">    &#39;config_url&#39;: &#39;appsec-1698&#39;, </span>
+<span class="sd">    &#39;index&#39;: 178, </span>
+<span class="sd">    &#39;owner&#39;: &#39;&#39;, </span>
+<span class="sd">    &#39;owner_id&#39;: &#39;cc4d0f59-1045-4b41-9b8c-507bc1a61c86&#39;, </span>
+<span class="sd">    &#39;state&#39;: &#39;CREATED&#39;}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Delete session</span>
+    <span class="n">cyperf_sessions</span><span class="o">.</span><span class="n">delete_session</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="s2">&quot;appsec-e4d87134-8843-461c-b40e-ea07ca5d8c82&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    {&quot;message&quot;: f&quot;Session appsec-e4d87134-8843-461c-b40e-ea07ca5d8c82 deleted successfully&quot;}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+
+
+
+
+
+
+</pre></div>
+</div>
+</div>
+</section>
+<section id="test-cyperf-network-profile-py">
+<h2>test_cyperf_network_profile.py<a class="headerlink" href="#test-cyperf-network-profile-py" title="Link to this heading"></a></h2>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">Sample: Network Profile Management</span><a class="headerlink" href="#id5" title="Link to this code"></a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="c1"># Ensure the parent directory is in sys.path for absolute imports</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))))</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">cyperf_scripts.cyperf_authorization</span><span class="w"> </span><span class="kn">import</span> <span class="n">CyperfAuthorization</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cyperf_scripts.cyperf_sessions</span><span class="w"> </span><span class="kn">import</span> <span class="n">CyperfSessions</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cyperf_scripts.cyperf_configurations</span><span class="w"> </span><span class="kn">import</span> <span class="n">CyperfConfigurations</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cyperf_scripts.cyperf_network_profile</span><span class="w"> </span><span class="kn">import</span> <span class="n">CyperfNetworkProfile</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib3</span><span class="p">;</span> <span class="n">urllib3</span><span class="o">.</span><span class="n">disable_warnings</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># Controller Authentication</span>
+    <span class="n">cyperf_client</span> <span class="o">=</span> <span class="n">CyperfAuthorization</span><span class="p">(</span><span class="n">controller_ip</span><span class="o">=</span><span class="s2">&quot;3.141.193.119&quot;</span><span class="p">,</span> 
+                                        <span class="n">refresh_token</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span> 
+                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;CyPerf&amp;Keysight#1&quot;</span>
+                                        <span class="p">)</span><span class="o">.</span><span class="n">get_cyperf_client</span><span class="p">()</span>
+    
+    
+    <span class="n">cyperf_network_profile</span> <span class="o">=</span> <span class="n">CyperfNetworkProfile</span><span class="p">(</span><span class="n">cyperf_client</span><span class="p">)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cyperf_network_profile</span><span class="o">.</span><span class="n">get_dut_segments_details</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="s2">&quot;appsec-f949b112-6059-42dd-9e4c-2cdd67739b75&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cyperf_network_profile</span><span class="o">.</span><span class="n">get_ip_segments_details</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="s2">&quot;appsec-f949b112-6059-42dd-9e4c-2cdd67739b75&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cyperf_network_profile</span><span class="o">.</span><span class="n">add_ip_network_segment</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="s2">&quot;appsec-f949b112-6059-42dd-9e4c-2cdd67739b75&quot;</span><span class="p">,</span> 
+                                                           <span class="n">ip_segment_name</span><span class="o">=</span><span class="s2">&quot;IP Network 26&quot;</span><span class="p">,</span> 
+                                                           <span class="n">ip_segment_id</span><span class="o">=</span><span class="s2">&quot;57&quot;</span><span class="p">,</span> 
+                                                           <span class="n">dut_connection_id</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="n">cyperf_network_profile</span><span class="o">.</span><span class="n">add_dut_network_segment</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="s2">&quot;appsec-f949b112-6059-42dd-9e4c-2cdd67739b75&quot;</span><span class="p">,</span> 
+                                                    <span class="n">dut_segment_name</span><span class="o">=</span><span class="s2">&quot;DUT Network 71&quot;</span><span class="p">,</span> 
+                                                    <span class="n">dut_segment_id</span><span class="o">=</span><span class="s2">&quot;71&quot;</span><span class="p">)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cyperf_network_profile</span><span class="o">.</span><span class="n">get_network_profiles_details</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="s2">&quot;appsec-f949b112-6059-42dd-9e4c-2cdd67739b75&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+
+</pre></div>
+</div>
+</div>
+</section>
+<section id="test-cyperf-objectives-py">
+<h2>test_cyperf_objectives.py<a class="headerlink" href="#test-cyperf-objectives-py" title="Link to this heading"></a></h2>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">Sample: Objectives Management</span><a class="headerlink" href="#id6" title="Link to this code"></a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="c1"># Ensure the parent directory is in sys.path for absolute imports</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))))</span>
+
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">cyperf_scripts.cyperf_sessions</span><span class="w"> </span><span class="kn">import</span> <span class="n">CyperfSessions</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cyperf_scripts.cyperf_objectives</span><span class="w"> </span><span class="kn">import</span> <span class="n">CyperfObjectives</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cyperf_scripts.cyperf_authorization</span><span class="w"> </span><span class="kn">import</span> <span class="n">CyperfAuthorization</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib3</span><span class="p">;</span> <span class="n">urllib3</span><span class="o">.</span><span class="n">disable_warnings</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">cyperf_client</span> <span class="o">=</span> <span class="n">CyperfAuthorization</span><span class="p">(</span><span class="n">controller_ip</span><span class="o">=</span><span class="s2">&quot;3.141.193.119&quot;</span><span class="p">,</span> 
+                                        <span class="n">refresh_token</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span> 
+                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;CyPerf&amp;Keysight#1&quot;</span>
+                                        <span class="p">)</span><span class="o">.</span><span class="n">get_cyperf_client</span><span class="p">()</span>
+    
+
+    <span class="n">cyperf_objectives</span> <span class="o">=</span> <span class="n">CyperfObjectives</span><span class="p">(</span><span class="n">cyperf_client</span><span class="p">)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cyperf_objectives</span><span class="o">.</span><span class="n">get_all_primary_objectives_goals</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="s2">&quot;appsec-d09bc450-8472-4e9c-9573-5859ae5ced57&quot;</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cyperf_objectives</span><span class="o">.</span><span class="n">get_all_secondary_objectives_goals</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="s2">&quot;appsec-d09bc450-8472-4e9c-9573-5859ae5ced57&quot;</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cyperf_objectives</span><span class="o">.</span><span class="n">set_primary_objective_goals</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="s2">&quot;appsec-d09bc450-8472-4e9c-9573-5859ae5ced57&quot;</span><span class="p">,</span> 
+                                                           <span class="n">primary_object_name</span><span class="o">=</span><span class="s2">&quot;CONNECTIONS_PER_SECOND&quot;</span><span class="p">,</span> 
+                                                           <span class="n">primary_objective_duration</span><span class="o">=</span><span class="mi">1234</span><span class="p">,</span> 
+                                                           <span class="n">primary_objective_goal</span><span class="o">=</span><span class="mi">1234</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="test-cyperf-traffic-profile-py">
+<h2>test_cyperf_traffic_profile.py<a class="headerlink" href="#test-cyperf-traffic-profile-py" title="Link to this heading"></a></h2>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">Sample: Traffic Profile Management</span><a class="headerlink" href="#id7" title="Link to this code"></a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="c1"># Ensure the parent directory is in sys.path for absolute imports</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))))</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">cyperf_scripts.cyperf_authorization</span><span class="w"> </span><span class="kn">import</span> <span class="n">CyperfAuthorization</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cyperf_scripts.cyperf_traffic_profile</span><span class="w"> </span><span class="kn">import</span> <span class="n">CyperfTrafficProfile</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cyperf_scripts.cyperf_applications</span><span class="w"> </span><span class="kn">import</span> <span class="n">CyperfApplications</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib3</span><span class="p">;</span> <span class="n">urllib3</span><span class="o">.</span><span class="n">disable_warnings</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">cyperf_client</span> <span class="o">=</span> <span class="n">CyperfAuthorization</span><span class="p">(</span><span class="n">controller_ip</span><span class="o">=</span><span class="s2">&quot;3.141.193.119&quot;</span><span class="p">,</span> 
+                                        <span class="n">refresh_token</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span> 
+                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;CyPerf&amp;Keysight#1&quot;</span>
+                                        <span class="p">)</span><span class="o">.</span><span class="n">get_cyperf_client</span><span class="p">()</span>
+    
+    <span class="n">cyperf_traffic_profile</span> <span class="o">=</span> <span class="n">CyperfTrafficProfile</span><span class="p">(</span><span class="n">cyperf_client</span><span class="p">)</span>
+    <span class="c1">#Get the configuration based on exact name match</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cyperf_traffic_profile</span><span class="o">.</span><span class="n">get_traffic_profile</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="s2">&quot;appsec-d09bc450-8472-4e9c-9573-5859ae5ced57&quot;</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cyperf_traffic_profile</span><span class="o">.</span><span class="n">get_traffic_profile_applications</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="s2">&quot;appsec-d09bc450-8472-4e9c-9573-5859ae5ced57&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="test-cyperf-configurations-py">
+<h2>test_cyperf_configurations.py<a class="headerlink" href="#test-cyperf-configurations-py" title="Link to this heading"></a></h2>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">Sample: Configuration Management</span><a class="headerlink" href="#id8" title="Link to this code"></a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="c1"># Ensure the parent directory is in sys.path for absolute imports</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))))</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">cyperf_scripts.cyperf_authorization</span><span class="w"> </span><span class="kn">import</span> <span class="n">CyperfAuthorization</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cyperf_scripts.cyperf_configurations</span><span class="w"> </span><span class="kn">import</span> <span class="n">CyperfConfigurations</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">cyperf_client</span> <span class="o">=</span> <span class="n">CyperfAuthorization</span><span class="p">(</span><span class="n">controller_ip</span><span class="o">=</span><span class="s2">&quot;3.141.193.119&quot;</span><span class="p">,</span> 
+                                        <span class="n">refresh_token</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span> 
+                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;CyPerf&amp;Keysight#1&quot;</span>
+                                        <span class="p">)</span><span class="o">.</span><span class="n">get_cyperf_client</span><span class="p">()</span>
+    
+    <span class="n">cyperf_configurations</span> <span class="o">=</span> <span class="n">CyperfConfigurations</span><span class="p">(</span><span class="n">cyperf_client</span><span class="p">)</span> 
+
+    <span class="c1"># Get the configuration based on exact name match</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cyperf_configurations</span><span class="o">.</span><span class="n">get_configuration</span><span class="p">(</span><span class="n">config_name</span><span class="o">=</span><span class="s2">&quot;IntegrationTestSessionLoaded&quot;</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cyperf_configurations</span><span class="o">.</span><span class="n">get_keyword_based_configuration_match</span><span class="p">(</span><span class="n">config_name</span><span class="o">=</span><span class="s2">&quot;Chrome&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="test-cyperf-tests-py">
+<h2>test_cyperf_tests.py<a class="headerlink" href="#test-cyperf-tests-py" title="Link to this heading"></a></h2>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">Sample: Test Run Management</span><a class="headerlink" href="#id9" title="Link to this code"></a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="c1"># Ensure the parent directory is in sys.path for absolute imports</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))))</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">cyperf_scripts.cyperf_authorization</span><span class="w"> </span><span class="kn">import</span> <span class="n">CyperfAuthorization</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cyperf_scripts.cyperf_test_runs</span><span class="w"> </span><span class="kn">import</span> <span class="n">CyperfTestRuns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib3</span><span class="p">;</span> <span class="n">urllib3</span><span class="o">.</span><span class="n">disable_warnings</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">cyperf_client</span> <span class="o">=</span> <span class="n">CyperfAuthorization</span><span class="p">(</span><span class="n">controller_ip</span><span class="o">=</span><span class="s2">&quot;3.141.193.119&quot;</span><span class="p">,</span> 
+                                        <span class="n">refresh_token</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span> 
+                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;CyPerf&amp;Keysight#1&quot;</span>
+                                        <span class="p">)</span><span class="o">.</span><span class="n">get_cyperf_client</span><span class="p">()</span>
+    
+
+    <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+    <span class="n">cyperf_test_runs</span> <span class="o">=</span> <span class="n">CyperfTestRuns</span><span class="p">(</span><span class="n">cyperf_client</span><span class="p">)</span>
+    <span class="c1">#cyperf_test_runs.start_test_run(session_id=&quot;appsec-d09bc450-8472-4e9c-9573-5859ae5ced57&quot;)</span>
+    <span class="c1">#time.sleep(30)</span>
+    <span class="n">cyperf_test_runs</span><span class="o">.</span><span class="n">stop_test_run</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="s2">&quot;appsec-9d25e7bb-f165-495e-82b2-278d6c1573d2&quot;</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+    <span class="n">cyperf_test_runs</span><span class="o">.</span><span class="n">abort_test_run</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="s2">&quot;appsec-9d25e7bb-f165-495e-82b2-278d6c1573d2&quot;</span><span class="p">)</span>
+    
+    <span class="c1">#print(result)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>  
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api_reference.html" class="btn btn-neutral float-right" title="API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

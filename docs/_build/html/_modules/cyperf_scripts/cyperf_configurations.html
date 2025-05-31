@@ -1,0 +1,256 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cyperf_scripts.cyperf_configurations &mdash; CyPerf REST Python Client  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            CyPerf REST Python Client
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_reference.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CyPerf REST Python Client</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">cyperf_scripts.cyperf_configurations</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for cyperf_scripts.cyperf_configurations</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">cyperf</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cyperf.api.sessions_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">SessionsApi</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cyperf.api.configurations_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfigurationsApi</span>
+
+
+<div class="viewcode-block" id="CyperfConfigurations">
+<a class="viewcode-back" href="../../cyperf_configurations.html#cyperf_scripts.cyperf_configurations.CyperfConfigurations">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">CyperfConfigurations</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handles configuration management for CyPerf sessions, including save, export, import, and URL retrieval.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="CyperfConfigurations.__init__">
+<a class="viewcode-back" href="../../cyperf_configurations.html#cyperf_scripts.cyperf_configurations.CyperfConfigurations.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">cyperf</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the CyperfConfigurations class with a CyPerf API client.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            client (cyperf.ApiClient): The CyPerf API client instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">client</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">session_client</span> <span class="o">=</span> <span class="n">SessionsApi</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CyperfConfigurations.get_configuration">
+<a class="viewcode-back" href="../../cyperf_configurations.html#cyperf_scripts.cyperf_configurations.CyperfConfigurations.get_configuration">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_configuration</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">config_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieves the configuration URL for a given configuration name.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            config_name (str, optional): The name of the configuration. Defaults to None.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: The configuration URL.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">config_api</span> <span class="o">=</span> <span class="n">ConfigurationsApi</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">)</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="n">config_api</span><span class="o">.</span><span class="n">get_configs</span><span class="p">(</span><span class="n">take</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
+                                        <span class="n">skip</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+                                        <span class="n">search_col</span><span class="o">=</span><span class="s1">&#39;displayName&#39;</span><span class="p">,</span> 
+                                        <span class="n">search_val</span><span class="o">=</span><span class="n">config_name</span><span class="p">,</span> 
+                                        <span class="n">filter_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                        <span class="n">sort</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;config_name&quot;</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">display_name</span><span class="p">,</span> 
+                <span class="s2">&quot;config_url&quot;</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">config_url</span><span class="p">,</span>
+                <span class="s2">&quot;config_id&quot;</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">id</span><span class="p">}</span></div>
+
+    
+<div class="viewcode-block" id="CyperfConfigurations.get_keyword_based_configuration_match">
+<a class="viewcode-back" href="../../cyperf_configurations.html#cyperf_scripts.cyperf_configurations.CyperfConfigurations.get_keyword_based_configuration_match">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_keyword_based_configuration_match</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">config_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieves the configuration URL for a given configuration name.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            config_name (str, optional): The name of the configuration. Defaults to None.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: The configuration URL.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">config_api</span> <span class="o">=</span> <span class="n">ConfigurationsApi</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">)</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="n">config_api</span><span class="o">.</span><span class="n">get_configs</span><span class="p">(</span><span class="n">take</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">search_col</span><span class="o">=</span><span class="s1">&#39;displayName&#39;</span><span class="p">,</span> 
+                                        <span class="n">search_val</span><span class="o">=</span><span class="n">config_name</span><span class="p">,</span> 
+                                        <span class="n">filter_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                        <span class="n">sort</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">pdb</span><span class="p">;</span> <span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;number_of_configs&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">data</span><span class="p">),</span> 
+                <span class="s2">&quot;list_of_matching_configs&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">{</span><span class="s2">&quot;config_name&quot;</span><span class="p">:</span> <span class="n">c</span><span class="o">.</span><span class="n">display_name</span><span class="p">,</span> 
+                <span class="s2">&quot;config_url&quot;</span><span class="p">:</span> <span class="n">c</span><span class="o">.</span><span class="n">config_url</span><span class="p">,</span>
+                <span class="s2">&quot;config_id&quot;</span><span class="p">:</span> <span class="n">c</span><span class="o">.</span><span class="n">id</span><span class="p">}</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">config</span><span class="o">.</span><span class="n">data</span><span class="p">]}</span></div>
+
+
+<div class="viewcode-block" id="CyperfConfigurations.save_configuration">
+<a class="viewcode-back" href="../../cyperf_configurations.html#cyperf_scripts.cyperf_configurations.CyperfConfigurations.save_configuration">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">save_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">session_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">save_config_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Saves the configuration for a given session.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            session_client: The SessionsApi client instance.</span>
+<span class="sd">            session_id (str, optional): The ID of the session to save. Defaults to None.</span>
+<span class="sd">            save_config_name (str, optional): The name to save the configuration as. Defaults to None.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: A message indicating the result of the operation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">save_config_operation</span> <span class="o">=</span> <span class="n">cyperf</span><span class="o">.</span><span class="n">SaveConfigOperation</span><span class="p">()</span>
+        <span class="n">save_config_operation</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">save_config_name</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Saving the configuration...&quot;</span><span class="p">)</span>
+        <span class="n">api_save_config_response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session_client</span><span class="o">.</span><span class="n">start_session_config_save</span><span class="p">(</span><span class="n">session_id</span><span class="p">,</span> <span class="n">save_config_operation</span><span class="o">=</span><span class="n">save_config_operation</span><span class="p">)</span>
+        <span class="n">saving_response</span> <span class="o">=</span> <span class="n">api_save_config_response</span><span class="o">.</span><span class="n">await_completion</span><span class="p">()</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Configuration saved successfully.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">config_id</span> <span class="o">=</span> <span class="n">saving_response</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span>
+        
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Configuration saved for session </span><span class="si">{</span><span class="n">session_id</span><span class="si">}</span><span class="s2"> with id </span><span class="si">{</span><span class="n">config_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="CyperfConfigurations.export_configuration">
+<a class="viewcode-back" href="../../cyperf_configurations.html#cyperf_scripts.cyperf_configurations.CyperfConfigurations.export_configuration">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">export_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">session_client</span><span class="p">,</span> <span class="n">session_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">export_config_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Exports the configuration for a given session.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            session_client: The SessionsApi client instance.</span>
+<span class="sd">            session_id (str, optional): The ID of the session to export. Defaults to None.</span>
+<span class="sd">            export_config_name (str, optional): The name to export the configuration as. Defaults to None.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: A message indicating the result of the operation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session_client</span><span class="o">.</span><span class="n">get_session_config</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="n">session_id</span><span class="p">,</span> <span class="n">include</span><span class="o">=</span><span class="s1">&#39;Config&#39;</span><span class="p">)</span>
+        <span class="n">api_configurations_instance</span> <span class="o">=</span> <span class="n">ConfigurationsApi</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">)</span>
+        <span class="n">export_all_operation</span> <span class="o">=</span> <span class="n">cyperf</span><span class="o">.</span><span class="n">ExportAllOperation</span><span class="p">(</span><span class="n">configIds</span><span class="o">=</span><span class="p">[</span><span class="n">cyperf</span><span class="o">.</span><span class="n">ConfigId</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">template_id</span><span class="p">)])</span>
+        <span class="n">api_configurations_response</span> <span class="o">=</span> <span class="n">api_configurations_instance</span><span class="o">.</span><span class="n">start_configs_export_all</span><span class="p">(</span><span class="n">export_all_operation</span><span class="o">=</span><span class="n">export_all_operation</span><span class="p">)</span>
+        <span class="n">file_path</span> <span class="o">=</span> <span class="n">api_configurations_response</span><span class="o">.</span><span class="n">await_completion</span><span class="p">()</span>
+        <span class="k">if</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span> <span class="ow">in</span> <span class="n">file_path</span><span class="p">:</span>
+            <span class="n">last_separator_index</span> <span class="o">=</span> <span class="n">file_path</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">last_separator_index</span> <span class="o">=</span> <span class="n">file_path</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+        <span class="n">directory</span> <span class="o">=</span> <span class="n">file_path</span><span class="p">[:</span><span class="n">last_separator_index</span><span class="p">]</span>
+        <span class="n">file_name</span> <span class="o">=</span> <span class="n">file_path</span><span class="p">[</span><span class="n">last_separator_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:]</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Exported as: &#39;</span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s2">&#39; at </span><span class="si">{</span><span class="n">directory</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="CyperfConfigurations.import_configuration">
+<a class="viewcode-back" href="../../cyperf_configurations.html#cyperf_scripts.cyperf_configurations.CyperfConfigurations.import_configuration">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">import_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Imports a configuration to be used in a CyPerf session.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            config_file_path (str, optional): The path of the configuration to import. Defaults to None.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: A message indicating the result of the operation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">api_configurations_instance</span> <span class="o">=</span> <span class="n">ConfigurationsApi</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="p">)</span>
+        <span class="n">import_all_operation</span> <span class="o">=</span> <span class="n">cyperf</span><span class="o">.</span><span class="n">ImportAllOperation</span><span class="p">(</span><span class="n">configs</span><span class="o">=</span><span class="p">[</span><span class="n">cyperf</span><span class="o">.</span><span class="n">ConfigMetadata</span><span class="p">(</span><span class="n">config_url</span><span class="o">=</span><span class="n">config_file_path</span><span class="p">)])</span>
+        <span class="n">api_configurations_response</span> <span class="o">=</span> <span class="n">api_configurations_instance</span><span class="o">.</span><span class="n">start_configs_import_all</span><span class="p">(</span><span class="n">import_all_operation</span><span class="o">=</span><span class="n">import_all_operation</span><span class="p">)</span>
+        <span class="n">file_path</span> <span class="o">=</span> <span class="n">api_configurations_response</span><span class="o">.</span><span class="n">await_completion</span><span class="p">()</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Imported as: &#39;</span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">}</span> </div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
