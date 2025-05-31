@@ -46,6 +46,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html#sample-scripts">Sample Scripts</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api_reference.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="cyperf_authorization.html">CyPerf Authorization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cyperf_applications.html">CyPerf Applications</a></li>
@@ -57,11 +58,11 @@
 <li class="toctree-l2"><a class="reference internal" href="cyperf_sessions.html">CyPerf Sessions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cyperf_statistics.html">CyPerf Statistics</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">CyPerf Test Runs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#cyperf_scripts.cyperf_test_runs.CyperfTestRuns"><code class="docutils literal notranslate"><span class="pre">CyperfTestRuns</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#cyperf_scripts.cyperf_test_runs.CyperfTestRuns.__init__"><code class="docutils literal notranslate"><span class="pre">CyperfTestRuns.__init__()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#cyperf_scripts.cyperf_test_runs.CyperfTestRuns.start_test_run"><code class="docutils literal notranslate"><span class="pre">CyperfTestRuns.start_test_run()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#cyperf_scripts.cyperf_test_runs.CyperfTestRuns.stop_test_run"><code class="docutils literal notranslate"><span class="pre">CyperfTestRuns.stop_test_run()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#cyperf_scripts.cyperf_test_runs.CyperfTestRuns.abort_test_run"><code class="docutils literal notranslate"><span class="pre">CyperfTestRuns.abort_test_run()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cyperf_restpy.cyperf_scripts.cyperf_test_runs.CyperfTestRuns"><code class="docutils literal notranslate"><span class="pre">CyperfTestRuns</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cyperf_restpy.cyperf_scripts.cyperf_test_runs.CyperfTestRuns.__init__"><code class="docutils literal notranslate"><span class="pre">CyperfTestRuns.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cyperf_restpy.cyperf_scripts.cyperf_test_runs.CyperfTestRuns.start_test_run"><code class="docutils literal notranslate"><span class="pre">CyperfTestRuns.start_test_run()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cyperf_restpy.cyperf_scripts.cyperf_test_runs.CyperfTestRuns.stop_test_run"><code class="docutils literal notranslate"><span class="pre">CyperfTestRuns.stop_test_run()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cyperf_restpy.cyperf_scripts.cyperf_test_runs.CyperfTestRuns.abort_test_run"><code class="docutils literal notranslate"><span class="pre">CyperfTestRuns.abort_test_run()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -98,14 +99,14 @@
              
   <section id="cyperf-test-runs">
 <h1>CyPerf Test Runs<a class="headerlink" href="#cyperf-test-runs" title="Link to this heading"></a></h1>
-<dl class="py class" id="module-cyperf_scripts.cyperf_test_runs">
-<dt class="sig sig-object py" id="cyperf_scripts.cyperf_test_runs.CyperfTestRuns">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cyperf_scripts.cyperf_test_runs.</span></span><span class="sig-name descname"><span class="pre">CyperfTestRuns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ApiClient</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cyperf_scripts/cyperf_test_runs.html#CyperfTestRuns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cyperf_scripts.cyperf_test_runs.CyperfTestRuns" title="Link to this definition"></a></dt>
+<dl class="py class" id="module-cyperf_restpy.cyperf_scripts.cyperf_test_runs">
+<dt class="sig sig-object py" id="cyperf_restpy.cyperf_scripts.cyperf_test_runs.CyperfTestRuns">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cyperf_restpy.cyperf_scripts.cyperf_test_runs.</span></span><span class="sig-name descname"><span class="pre">CyperfTestRuns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ApiClient</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cyperf_restpy/cyperf_scripts/cyperf_test_runs.html#CyperfTestRuns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cyperf_restpy.cyperf_scripts.cyperf_test_runs.CyperfTestRuns" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Handles starting, stopping, and aborting test runs in CyPerf sessions.</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="cyperf_scripts.cyperf_test_runs.CyperfTestRuns.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ApiClient</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cyperf_scripts/cyperf_test_runs.html#CyperfTestRuns.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cyperf_scripts.cyperf_test_runs.CyperfTestRuns.__init__" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="cyperf_restpy.cyperf_scripts.cyperf_test_runs.CyperfTestRuns.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ApiClient</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cyperf_restpy/cyperf_scripts/cyperf_test_runs.html#CyperfTestRuns.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cyperf_restpy.cyperf_scripts.cyperf_test_runs.CyperfTestRuns.__init__" title="Link to this definition"></a></dt>
 <dd><p>Initializes the CyperfTestRuns class with a CyPerf API client.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -115,8 +116,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="cyperf_scripts.cyperf_test_runs.CyperfTestRuns.start_test_run">
-<span class="sig-name descname"><span class="pre">start_test_run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/cyperf_scripts/cyperf_test_runs.html#CyperfTestRuns.start_test_run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cyperf_scripts.cyperf_test_runs.CyperfTestRuns.start_test_run" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="cyperf_restpy.cyperf_scripts.cyperf_test_runs.CyperfTestRuns.start_test_run">
+<span class="sig-name descname"><span class="pre">start_test_run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/cyperf_restpy/cyperf_scripts/cyperf_test_runs.html#CyperfTestRuns.start_test_run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cyperf_restpy.cyperf_scripts.cyperf_test_runs.CyperfTestRuns.start_test_run" title="Link to this definition"></a></dt>
 <dd><p>Starts a test run for a given session.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -132,8 +133,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="cyperf_scripts.cyperf_test_runs.CyperfTestRuns.stop_test_run">
-<span class="sig-name descname"><span class="pre">stop_test_run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/cyperf_scripts/cyperf_test_runs.html#CyperfTestRuns.stop_test_run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cyperf_scripts.cyperf_test_runs.CyperfTestRuns.stop_test_run" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="cyperf_restpy.cyperf_scripts.cyperf_test_runs.CyperfTestRuns.stop_test_run">
+<span class="sig-name descname"><span class="pre">stop_test_run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/cyperf_restpy/cyperf_scripts/cyperf_test_runs.html#CyperfTestRuns.stop_test_run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cyperf_restpy.cyperf_scripts.cyperf_test_runs.CyperfTestRuns.stop_test_run" title="Link to this definition"></a></dt>
 <dd><p>Stops a test run for a given session.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -149,8 +150,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="cyperf_scripts.cyperf_test_runs.CyperfTestRuns.abort_test_run">
-<span class="sig-name descname"><span class="pre">abort_test_run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/cyperf_scripts/cyperf_test_runs.html#CyperfTestRuns.abort_test_run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cyperf_scripts.cyperf_test_runs.CyperfTestRuns.abort_test_run" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="cyperf_restpy.cyperf_scripts.cyperf_test_runs.CyperfTestRuns.abort_test_run">
+<span class="sig-name descname"><span class="pre">abort_test_run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/cyperf_restpy/cyperf_scripts/cyperf_test_runs.html#CyperfTestRuns.abort_test_run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cyperf_restpy.cyperf_scripts.cyperf_test_runs.CyperfTestRuns.abort_test_run" title="Link to this definition"></a></dt>
 <dd><p>Aborts a test run for a given session.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>

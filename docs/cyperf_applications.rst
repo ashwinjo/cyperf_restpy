@@ -1,7 +1,7 @@
 CyPerf Applications
 ==================
 
-.. automodule:: cyperf_scripts.cyperf_applications
+.. automodule:: cyperf_restpy.cyperf_scripts.cyperf_applications
    :members:
    :undoc-members:
    :show-inheritance:

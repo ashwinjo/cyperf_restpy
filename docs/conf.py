@@ -2,7 +2,7 @@
 
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../cyperf_restpy'))
+sys.path.insert(0, os.path.abspath('..'))
 
 project = 'CyPerf REST Python Client'
 copyright = '2024'
