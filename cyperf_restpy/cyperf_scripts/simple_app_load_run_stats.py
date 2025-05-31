@@ -306,7 +306,7 @@ class CyperfTestRunner:
         network_profiles.append(cyperf.NetworkProfile(IPNetworkSegment=[], id="13"))
         for iface in session.config.config.network_profiles:
             print(iface.id)
-        import pdb; pdb.set_trace()
+    
         network_profiles.update()
         return {"message": f"IP network elements added to session {session_id} - {session.name}"}
 

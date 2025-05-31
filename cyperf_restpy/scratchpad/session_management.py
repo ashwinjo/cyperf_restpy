@@ -117,10 +117,6 @@ def get_session_traffic_profile(session_id):
                 segment.objective_unit  = cyperf.ObjectiveUnit.EMPTY
         item.objectives_and_timeline.primary_objective.update()
         
-        # This update does not exist
-        #import pdb; pdb.set_trace()
-        
-        #segmenttimeline.update()
     
        
        

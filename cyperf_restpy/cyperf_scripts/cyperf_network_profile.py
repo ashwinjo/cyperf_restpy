@@ -17,6 +17,7 @@ class CyperfNetworkProfile:
     def get_network_profiles_details(self, session_id: str = None) -> dict:
         """
         Get the details of the network profiles for a given session.
+
         Args:
             session_id (str): The ID of the session to get the network profiles for.
 
@@ -29,12 +30,13 @@ class CyperfNetworkProfile:
 
     def get_dut_segments_details(self, session_id: str = None) -> dict:
         """
-        Get the details of the network profiles for a given session.
+        Get the details of the DUT network segments for a given session.
+
         Args:
-            session_id (str): The ID of the session to get the network profiles for.
+            session_id (str): The ID of the session to get the DUT network segments for.
 
         Returns:
-            dict: A dictionary containing the details of the network profiles.
+            dict: A dictionary containing the details of the DUT network segments.
         """
         dut_elements = []
         session = self.session_client.get_session_by_id(session_id=session_id)
@@ -49,12 +51,13 @@ class CyperfNetworkProfile:
     
     def get_ip_segments_details(self, session_id: str = None) -> dict:
         """
-        Get the details of the network profiles for a given session.
+        Get the details of the IP network segments for a given session.
+
         Args:
-            session_id (str): The ID of the session to get the network profiles for.
+            session_id (str): The ID of the session to get the IP network segments for.
 
         Returns:
-            dict: A dictionary containing the details of the network profiles.
+            dict: A dictionary containing the details of the IP network segments.
         """
         ip_elements = []
         session = self.session_client.get_session_by_id(session_id=session_id)
@@ -74,6 +77,18 @@ class CyperfNetworkProfile:
         ip_segment_id: str = None,
         dut_connection_id: str = None,
     ) -> dict:
+        """
+        Add an IP network segment to the network profile for a given session.
+
+        Args:
+            session_id (str): The ID of the session to add the IP network segment to.
+            ip_segment_name (str): The name of the IP network segment.
+            ip_segment_id (str): The ID of the IP network segment.
+            dut_connection_id (str): The DUT connection ID to associate with the IP network segment.
+
+        Returns:
+            dict: A dictionary containing the updated details of the IP network segments.
+        """
         session = self.session_client.get_session_by_id(session_id=session_id)
         network_profile = session.config.config.network_profiles[0]
 
@@ -100,8 +115,18 @@ class CyperfNetworkProfile:
         dut_segment_name: str = None,
         dut_segment_id: str = None,
     ) -> dict:
+        """
+        Add a DUT network segment to the network profile for a given session.
+
+        Args:
+            session_id (str): The ID of the session to add the DUT network segment to.
+            dut_segment_name (str): The name of the DUT network segment.
+            dut_segment_id (str): The ID of the DUT network segment.
+
+        Returns:
+            dict: A dictionary containing the updated details of the DUT network segments.
+        """
         session = self.session_client.get_session_by_id(session_id=session_id)
-        import pdb; pdb.set_trace()
         network_profile = session.config.config.network_profiles[0]
         
         dut_network_segment = cyperf.DUTNetwork(name=dut_segment_name, id=dut_segment_id)

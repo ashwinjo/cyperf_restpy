@@ -9,7 +9,7 @@ class CyperfAttacks:
     def __init__(self, client: cyperf.ApiClient):
         """
         Initializes the CyperfAttacks class with a CyPerf API client.
-
+                
         Args:
             client (cyperf.ApiClient): The CyPerf API client instance.
         """
