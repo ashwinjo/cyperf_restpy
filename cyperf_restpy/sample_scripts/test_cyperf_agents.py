@@ -30,8 +30,8 @@ def main():
     result = cyperf_agents.assign_agents_to_network_elements(session_id="appsec-d09bc450-8472-4e9c-9573-5859ae5ced57", 
                                                              agent_map=agent_map)
     
-    # result = cyperf_agents.unassign_all_agents_for_session(session_id="appsec-d09bc450-8472-4e9c-9573-5859ae5ced57")
-    # print(result)
+    result = cyperf_agents.unassign_all_agents_for_session(session_id="appsec-d09bc450-8472-4e9c-9573-5859ae5ced57")
+    print(result)
 
 if __name__ == "__main__":
     main()

@@ -68,19 +68,24 @@ class CyperfStatistics:
 
     def view_stats(
         self,
-        processed_stats: dict,
+        session_id: str = None,
+        processed_stats: dict = None,
         stat_name: str = None
     ) -> pd.DataFrame:
         """
         Visualizes the selected stat as a time series using pandas and prints available columns.
 
         Args:
+            session_id (str, optional): The ID of the session to collect stats for. Defaults to None.
             processed_stats (dict): The processed stats dictionary (as returned by collect_test_run_stats).
             stat_name (str, optional): The stat name to visualize (e.g., 'client-application-connection-rate'). Defaults to None.
 
         Returns:
             pd.DataFrame: The last 50 records of the selected stat as a DataFrame.
         """
+        if not processed_stats:
+            processed_stats = self.collect_test_run_stats(session_id=session_id, 
+                                                          stats_name=stat_name)
         if stat_name not in list(processed_stats.keys()):
             raise ValueError(f"Stats name {stat_name} not found in available stats")
         stats_dict = processed_stats[stat_name]
@@ -94,3 +99,21 @@ class CyperfStatistics:
         if 'filter' in df.columns:
             df = df.drop(columns=['filter'])
         return df.tail(50) 
+    
+    def show_available_stats(
+        self,
+        session_id: str = None
+    ) -> list:
+        """
+        Shows all available stats for a given session.
+
+        Args:
+            session_id (str, optional): The ID of the session to collect stats for. Defaults to None.
+
+        Returns:
+            list: A list of available stats.
+        """
+        collected_stats = self.collect_test_run_stats(session_id=session_id)
+        return list(collected_stats.keys())
+
+
