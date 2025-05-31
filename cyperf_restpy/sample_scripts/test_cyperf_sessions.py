@@ -14,7 +14,7 @@ def main():
     # Controller Authentication
     cyperf_client = CyperfAuthorization(controller_ip="3.141.193.119", 
                                         refresh_token=None, username="admin", 
-                                        password="CyPerf&Keysight#1"
+                                        password="mypassword"
                                         ).get_cyperf_client()
 
     cyperf_sessions = CyperfSessions(cyperf_client)

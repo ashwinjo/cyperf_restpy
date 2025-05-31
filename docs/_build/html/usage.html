@@ -134,7 +134,7 @@ python<span class="w"> </span>-m<span class="w"> </span>cyperf_restpy.sample_scr
 <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="n">cyperf_client</span> <span class="o">=</span> <span class="n">CyperfAuthorization</span><span class="p">(</span><span class="n">controller_ip</span><span class="o">=</span><span class="s2">&quot;3.141.193.119&quot;</span><span class="p">,</span> 
                                         <span class="n">refresh_token</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span> 
-                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;CyPerf&amp;Keysight#1&quot;</span>
+                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;mypassword&quot;</span>
                                         <span class="p">)</span><span class="o">.</span><span class="n">get_cyperf_client</span><span class="p">()</span>
     
     
@@ -178,7 +178,7 @@ python<span class="w"> </span>-m<span class="w"> </span>cyperf_restpy.sample_scr
 <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="n">cyperf_client</span> <span class="o">=</span> <span class="n">CyperfAuthorization</span><span class="p">(</span><span class="n">controller_ip</span><span class="o">=</span><span class="s2">&quot;3.141.193.119&quot;</span><span class="p">,</span> 
                                         <span class="n">refresh_token</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span> 
-                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;CyPerf&amp;Keysight#1&quot;</span>
+                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;mypassword&quot;</span>
                                         <span class="p">)</span><span class="o">.</span><span class="n">get_cyperf_client</span><span class="p">()</span>
     
     <span class="n">cyperf_agents</span> <span class="o">=</span> <span class="n">CyperfAgents</span><span class="p">(</span><span class="n">cyperf_client</span><span class="p">)</span>
@@ -223,7 +223,7 @@ python<span class="w"> </span>-m<span class="w"> </span>cyperf_restpy.sample_scr
 <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="n">cyperf_client</span> <span class="o">=</span> <span class="n">CyperfAuthorization</span><span class="p">(</span><span class="n">controller_ip</span><span class="o">=</span><span class="s2">&quot;3.141.193.119&quot;</span><span class="p">,</span> 
                                         <span class="n">refresh_token</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span> 
-                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;CyPerf&amp;Keysight#1&quot;</span>
+                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;mypassword&quot;</span>
                                         <span class="p">)</span><span class="o">.</span><span class="n">get_cyperf_client</span><span class="p">()</span>
     
     <span class="n">cyperf_statistics</span> <span class="o">=</span> <span class="n">CyperfStatistics</span><span class="p">(</span><span class="n">cyperf_client</span><span class="p">)</span>
@@ -265,7 +265,7 @@ python<span class="w"> </span>-m<span class="w"> </span>cyperf_restpy.sample_scr
     <span class="c1"># Controller Authentication</span>
     <span class="n">cyperf_client</span> <span class="o">=</span> <span class="n">CyperfAuthorization</span><span class="p">(</span><span class="n">controller_ip</span><span class="o">=</span><span class="s2">&quot;3.141.193.119&quot;</span><span class="p">,</span> 
                                         <span class="n">refresh_token</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span> 
-                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;CyPerf&amp;Keysight#1&quot;</span>
+                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;mypassword&quot;</span>
                                         <span class="p">)</span><span class="o">.</span><span class="n">get_cyperf_client</span><span class="p">()</span>
 
     <span class="n">cyperf_sessions</span> <span class="o">=</span> <span class="n">CyperfSessions</span><span class="p">(</span><span class="n">cyperf_client</span><span class="p">)</span>
@@ -349,7 +349,7 @@ python<span class="w"> </span>-m<span class="w"> </span>cyperf_restpy.sample_scr
     <span class="c1"># Controller Authentication</span>
     <span class="n">cyperf_client</span> <span class="o">=</span> <span class="n">CyperfAuthorization</span><span class="p">(</span><span class="n">controller_ip</span><span class="o">=</span><span class="s2">&quot;3.141.193.119&quot;</span><span class="p">,</span> 
                                         <span class="n">refresh_token</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span> 
-                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;CyPerf&amp;Keysight#1&quot;</span>
+                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;mypassword&quot;</span>
                                         <span class="p">)</span><span class="o">.</span><span class="n">get_cyperf_client</span><span class="p">()</span>
     
     
@@ -402,7 +402,7 @@ python<span class="w"> </span>-m<span class="w"> </span>cyperf_restpy.sample_scr
 <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="n">cyperf_client</span> <span class="o">=</span> <span class="n">CyperfAuthorization</span><span class="p">(</span><span class="n">controller_ip</span><span class="o">=</span><span class="s2">&quot;3.141.193.119&quot;</span><span class="p">,</span> 
                                         <span class="n">refresh_token</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span> 
-                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;CyPerf&amp;Keysight#1&quot;</span>
+                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;mypassword&quot;</span>
                                         <span class="p">)</span><span class="o">.</span><span class="n">get_cyperf_client</span><span class="p">()</span>
     
 
@@ -440,7 +440,7 @@ python<span class="w"> </span>-m<span class="w"> </span>cyperf_restpy.sample_scr
 <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="n">cyperf_client</span> <span class="o">=</span> <span class="n">CyperfAuthorization</span><span class="p">(</span><span class="n">controller_ip</span><span class="o">=</span><span class="s2">&quot;3.141.193.119&quot;</span><span class="p">,</span> 
                                         <span class="n">refresh_token</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span> 
-                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;CyPerf&amp;Keysight#1&quot;</span>
+                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;mypassword&quot;</span>
                                         <span class="p">)</span><span class="o">.</span><span class="n">get_cyperf_client</span><span class="p">()</span>
     
     <span class="n">cyperf_traffic_profile</span> <span class="o">=</span> <span class="n">CyperfTrafficProfile</span><span class="p">(</span><span class="n">cyperf_client</span><span class="p">)</span>
@@ -472,7 +472,7 @@ python<span class="w"> </span>-m<span class="w"> </span>cyperf_restpy.sample_scr
 <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="n">cyperf_client</span> <span class="o">=</span> <span class="n">CyperfAuthorization</span><span class="p">(</span><span class="n">controller_ip</span><span class="o">=</span><span class="s2">&quot;3.141.193.119&quot;</span><span class="p">,</span> 
                                         <span class="n">refresh_token</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span> 
-                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;CyPerf&amp;Keysight#1&quot;</span>
+                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;mypassword&quot;</span>
                                         <span class="p">)</span><span class="o">.</span><span class="n">get_cyperf_client</span><span class="p">()</span>
     
     <span class="n">cyperf_configurations</span> <span class="o">=</span> <span class="n">CyperfConfigurations</span><span class="p">(</span><span class="n">cyperf_client</span><span class="p">)</span> 
@@ -505,7 +505,7 @@ python<span class="w"> </span>-m<span class="w"> </span>cyperf_restpy.sample_scr
 <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="n">cyperf_client</span> <span class="o">=</span> <span class="n">CyperfAuthorization</span><span class="p">(</span><span class="n">controller_ip</span><span class="o">=</span><span class="s2">&quot;3.141.193.119&quot;</span><span class="p">,</span> 
                                         <span class="n">refresh_token</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span> 
-                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;CyPerf&amp;Keysight#1&quot;</span>
+                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;mypassword&quot;</span>
                                         <span class="p">)</span><span class="o">.</span><span class="n">get_cyperf_client</span><span class="p">()</span>
     
 
