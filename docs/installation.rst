@@ -5,7 +5,9 @@ Requirements
 -----------
 
 * Python 3.7 or higher
-* pip package manager
+* cyperf-restpy package
+
+
 
 Installation
 -----------
@@ -14,4 +16,4 @@ You can install the package using pip:
 
 .. code-block:: bash
 
-   pip install cyperf-restpy
+  *WIP
