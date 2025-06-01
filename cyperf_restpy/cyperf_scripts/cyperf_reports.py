@@ -8,14 +8,28 @@ from typing import Optional, Dict, Any, Union
 class CyperfReports:
     """CyPerf reports management utilities."""
     def __init__(self, client: cyperf.ApiClient) -> None:
-        """Initialize the CyperfReports class."""
+        """
+        Initialize the CyperfReports class.
+
+        Args:
+            client (cyperf.ApiClient): The CyPerf API client instance.
+        """
         self.client = client
         self.reports_api = ReportsApi(self.client)
         self.session_client = SessionsApi(self.client)
         
 
     def download_pdf_report(self, session_id: Optional[str] = None) -> Union[Dict[str, str], Exception]:
-        """Download the PDF report for a given session."""
+        """
+        Download the PDF report for a given session.
+
+        Args:
+            session_id (str, optional): The ID of the session to download the PDF report for.
+
+        Returns:
+            dict: A dictionary with the saved file location.
+            Exception: If the download fails.
+        """
         try:
             test_id = self._get_test_id(session_id=session_id)
             download_op = self.reports_api.start_result_generate_pdf(result_id=test_id)
@@ -24,7 +38,16 @@ class CyperfReports:
             return Exception(f"Failed to download PDF report: {str(e)}")
     
     def download_csv_report(self, session_id: Optional[str] = None) -> Union[Dict[str, str], Exception]:
-        """Download the CSV report for a given session."""
+        """
+        Download the CSV report for a given session.
+
+        Args:
+            session_id (str, optional): The ID of the session to download the CSV report for.
+
+        Returns:
+            dict: A dictionary with the saved file location.
+            Exception: If the download fails.
+        """
         try:
             test_id = self._get_test_id(session_id=session_id)
             download_op = self.reports_api.start_result_generate_csv(result_id=test_id)
@@ -33,6 +56,16 @@ class CyperfReports:
             return Exception(f"Failed to download CSV report: {str(e)}")
 
     def _get_test_id(self, session_id: Optional[str] = None) -> Union[str, Exception]:
+        """
+        Retrieve the test ID for a given session.
+
+        Args:
+            session_id (str, optional): The ID of the session to retrieve the test ID for.
+
+        Returns:
+            str: The test ID.
+            Exception: If the retrieval fails.
+        """
         try:
             test = self.session_client.get_session_test(session_id=session_id)
             test_id = [a[1] for a in test if a[0] == 'test_id'][0]

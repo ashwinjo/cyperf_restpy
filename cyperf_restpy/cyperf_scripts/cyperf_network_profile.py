@@ -9,12 +9,26 @@ from typing import Optional, Dict, Any, List, Union
 class CyperfNetworkProfile:
     """CyPerf Network Profile management utilities."""
     def __init__(self, client: cyperf.ApiClient) -> None:
-        """Initializes the CyperfNetworkProfile class with a CyPerf API client."""
+        """
+        Initializes the CyperfNetworkProfile class with a CyPerf API client.
+
+        Args:
+            client (cyperf.ApiClient): The CyPerf API client instance.
+        """
         self.client = client
         self.session_client = SessionsApi(self.client)
 
     def get_network_profiles_details(self, session_id: Optional[str] = None) -> Union[Dict[str, Any], Exception]:
-        """Get the details of the network profiles for a given session."""
+        """
+        Get the details of the network profiles for a given session.
+
+        Args:
+            session_id (str, optional): The ID of the session to query.
+
+        Returns:
+            dict: The network profile details.
+            Exception: If the retrieval fails.
+        """
         try:
             session = self.session_client.get_session_by_id(session_id=session_id)
             network_profiles = session.config.config.network_profiles[0]
@@ -23,7 +37,16 @@ class CyperfNetworkProfile:
             return Exception(f"Failed to get network profiles details: {str(e)}")
 
     def get_dut_segments_details(self, session_id: Optional[str] = None) -> Union[List[Dict[str, Any]], Exception]:
-        """Get the details of the DUT network segments for a given session."""
+        """
+        Get the details of the DUT network segments for a given session.
+
+        Args:
+            session_id (str, optional): The ID of the session to query.
+
+        Returns:
+            list: A list of dictionaries with DUT segment details.
+            Exception: If the retrieval fails.
+        """
         try:
             dut_elements = []
             session = self.session_client.get_session_by_id(session_id=session_id)
@@ -39,7 +62,16 @@ class CyperfNetworkProfile:
             return Exception(f"Failed to get DUT segments details: {str(e)}")
     
     def get_ip_segments_details(self, session_id: Optional[str] = None) -> Union[List[Dict[str, Any]], Exception]:
-        """Get the details of the IP network segments for a given session."""
+        """
+        Get the details of the IP network segments for a given session.
+
+        Args:
+            session_id (str, optional): The ID of the session to query.
+
+        Returns:
+            list: A list of dictionaries with IP segment details.
+            Exception: If the retrieval fails.
+        """
         try:
             ip_elements = []
             session = self.session_client.get_session_by_id(session_id=session_id)
@@ -61,7 +93,19 @@ class CyperfNetworkProfile:
         ip_segment_id: Optional[str] = None,
         dut_connection_id: Optional[str] = None,
     ) -> Union[Dict[str, Any], Exception]:
-        """Add an IP network segment to the network profile for a given session."""
+        """
+        Add an IP network segment to the network profile for a given session.
+
+        Args:
+            session_id (str, optional): The ID of the session to modify.
+            ip_segment_name (str, optional): The name of the IP segment to add.
+            ip_segment_id (str, optional): The ID of the IP segment to add.
+            dut_connection_id (str, optional): The DUT connection ID to associate.
+
+        Returns:
+            dict: The updated list of IP segments.
+            Exception: If the addition fails.
+        """
         try:
             session = self.session_client.get_session_by_id(session_id=session_id)
             network_profile = session.config.config.network_profiles[0]
@@ -89,7 +133,18 @@ class CyperfNetworkProfile:
         dut_segment_name: Optional[str] = None,
         dut_segment_id: Optional[str] = None,
     ) -> Union[Dict[str, Any], Exception]:
-        """Add a DUT network segment to the network profile for a given session."""
+        """
+        Add a DUT network segment to the network profile for a given session.
+
+        Args:
+            session_id (str, optional): The ID of the session to modify.
+            dut_segment_name (str, optional): The name of the DUT segment to add.
+            dut_segment_id (str, optional): The ID of the DUT segment to add.
+
+        Returns:
+            dict: The updated list of DUT segments.
+            Exception: If the addition fails.
+        """
         try:
             session = self.session_client.get_session_by_id(session_id=session_id)
             network_profile = session.config.config.network_profiles[0]

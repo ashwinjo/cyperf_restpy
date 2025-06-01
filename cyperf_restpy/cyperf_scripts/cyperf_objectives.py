@@ -7,7 +7,12 @@ from typing import Optional, Dict, Any, List, Union
 class CyperfObjectives:
     """Manages primary objectives and timelines in CyPerf sessions."""
     def __init__(self, client: cyperf.ApiClient) -> None:
-        """Initializes the CyperfObjectives class with a CyPerf API client."""
+        """
+        Initializes the CyperfObjectives class with a CyPerf API client.
+
+        Args:
+            client (cyperf.ApiClient): The CyPerf API client instance.
+        """
         self.client = client
         self.session_client = SessionsApi(self.client)
 
@@ -18,7 +23,19 @@ class CyperfObjectives:
         primary_objective_duration: int = 123,
         primary_objective_goal: int = 1234
     ) -> Union[Dict[str, Any], Exception]:
-        """Sets the primary objective goals for a given session."""
+        """
+        Sets the primary objective goals for a given session.
+
+        Args:
+            session_id (str, optional): The ID of the session to set objectives for.
+            primary_object_name (str, optional): The name of the primary objective.
+            primary_objective_duration (int, optional): The duration for the primary objective.
+            primary_objective_goal (int, optional): The goal value for the primary objective.
+
+        Returns:
+            dict: The updated primary objectives goals.
+            Exception: If the operation fails.
+        """
         try:
             objectives_dict = {
                 "SIMULATED_USERS": cyperf.ObjectiveType.SIMULATED_USERS,
@@ -48,7 +65,16 @@ class CyperfObjectives:
             return Exception(f"Failed to set primary objective goals: {str(e)}")
 
     def get_all_primary_objectives_goals(self, session_id: Optional[str] = None) -> Union[List[Dict[str, Any]], Exception]:
-        """Retrieves all primary objective goals for a given session."""
+        """
+        Retrieves all primary objective goals for a given session.
+
+        Args:
+            session_id (str, optional): The ID of the session to retrieve objectives for.
+
+        Returns:
+            list: A list of dictionaries with primary objective details.
+            Exception: If the retrieval fails.
+        """
         try:
             include = 'Config, TrafficProfiles'
             config = self.session_client.get_session_config(session_id=session_id, include=include)
@@ -73,7 +99,16 @@ class CyperfObjectives:
             return Exception(f"Failed to get all primary objectives goals: {str(e)}")
 
     def get_all_secondary_objectives_goals(self, session_id: Optional[str] = None) -> Union[Dict[str, Any], Exception]:
-        """Retrieves all secondary objective goals for a given session."""
+        """
+        Retrieves all secondary objective goals for a given session.
+
+        Args:
+            session_id (str, optional): The ID of the session to retrieve secondary objectives for.
+
+        Returns:
+            dict: A dictionary with secondary objective details.
+            Exception: If the retrieval fails.
+        """
         try:
             include = 'Config, TrafficProfiles'
             config = self.session_client.get_session_config(session_id=session_id, include=include)

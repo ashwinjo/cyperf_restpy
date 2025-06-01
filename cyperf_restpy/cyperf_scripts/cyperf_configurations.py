@@ -8,12 +8,26 @@ from typing import Optional, Dict, Any, List, Union
 class CyperfConfigurations:
     """Handles configuration management for CyPerf sessions, including save, export, import, and URL retrieval."""
     def __init__(self, client: cyperf.ApiClient) -> None:
-        """Initializes the CyperfConfigurations class with a CyPerf API client."""
+        """
+        Initializes the CyperfConfigurations class with a CyPerf API client.
+
+        Args:
+            client (cyperf.ApiClient): The CyPerf API client instance.
+        """
         self.client = client
         self.session_client = SessionsApi(self.client)
 
     def get_configuration(self, config_name: Optional[str] = None) -> Union[Dict[str, Any], Exception]:
-        """Retrieves the configuration URL for a given configuration name."""
+        """
+        Retrieves the configuration URL for a given configuration name.
+
+        Args:
+            config_name (str, optional): The name of the configuration to retrieve.
+
+        Returns:
+            dict: A dictionary containing the configuration name, URL, and ID.
+            Exception: If the retrieval fails.
+        """
         try:
             config_api = ConfigurationsApi(self.client)
             config = config_api.get_configs(take=1, skip=0, search_col='displayName', search_val=config_name, filter_mode=None, sort=None)
@@ -22,7 +36,16 @@ class CyperfConfigurations:
             return Exception(f"Failed to get configuration: {str(e)}")
 
     def get_keyword_based_configuration_match(self, config_name: Optional[str] = None) -> Union[Dict[str, Any], Exception]:
-        """Retrieves the configuration URL for a given configuration name (keyword match)."""
+        """
+        Retrieves all configurations matching a given name keyword.
+
+        Args:
+            config_name (str, optional): The keyword to match configuration names.
+
+        Returns:
+            dict: A dictionary with the number of configs and a list of matching configs.
+            Exception: If the retrieval fails.
+        """
         try:
             config_api = ConfigurationsApi(self.client)
             config = config_api.get_configs(take=1000, skip=0, search_col='displayName', search_val=config_name, filter_mode=None, sort=None)
@@ -31,7 +54,17 @@ class CyperfConfigurations:
             return Exception(f"Failed to get keyword-based configuration match: {str(e)}")
 
     def save_configuration(self, session_id: Optional[str] = None, save_config_name: Optional[str] = None) -> Union[Dict[str, str], Exception]:
-        """Saves the configuration for a given session."""
+        """
+        Saves the configuration for a given session.
+
+        Args:
+            session_id (str, optional): The ID of the session to save the configuration for.
+            save_config_name (str, optional): The name to save the configuration as.
+
+        Returns:
+            dict: A message indicating the result of the save operation.
+            Exception: If the save fails.
+        """
         try:
             save_config_operation = cyperf.SaveConfigOperation()
             save_config_operation.name = save_config_name
@@ -43,7 +76,18 @@ class CyperfConfigurations:
             return Exception(f"Failed to save configuration: {str(e)}")
 
     def export_configuration(self, session_client, session_id: Optional[str] = None, export_config_name: Optional[str] = None) -> Union[Dict[str, str], Exception]:
-        """Exports the configuration for a given session."""
+        """
+        Exports the configuration for a given session.
+
+        Args:
+            session_client: The session client instance (not used, kept for compatibility).
+            session_id (str, optional): The ID of the session to export the configuration from.
+            export_config_name (str, optional): The name to export the configuration as.
+
+        Returns:
+            dict: A message indicating the export file name and directory.
+            Exception: If the export fails.
+        """
         try:
             config = self.session_client.get_session_config(session_id=session_id, include='Config')
             api_configurations_instance = ConfigurationsApi(self.client)
@@ -61,7 +105,16 @@ class CyperfConfigurations:
             return Exception(f"Failed to export configuration: {str(e)}")
 
     def import_configuration(self, config_file_path: Optional[str] = None) -> Union[Dict[str, str], Exception]:
-        """Imports a configuration to be used in a CyPerf session."""
+        """
+        Imports a configuration to be used in a CyPerf session.
+
+        Args:
+            config_file_path (str, optional): The file path to the configuration file to import.
+
+        Returns:
+            dict: A message indicating the result of the import operation.
+            Exception: If the import fails.
+        """
         try:
             api_configurations_instance = ConfigurationsApi(self.client)
             import_all_operation = cyperf.ImportAllOperation(configs=[cyperf.ConfigMetadata(config_url=config_file_path)])

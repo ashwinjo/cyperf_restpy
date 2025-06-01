@@ -9,7 +9,12 @@ from typing import Optional, Dict, Any, List, Union
 class CyperfStatistics:
     """Handles statistics collection and visualization for CyPerf test runs."""
     def __init__(self, client: cyperf.ApiClient) -> None:
-        """Initializes the CyperfStatistics class with a CyPerf API client."""
+        """
+        Initializes the CyperfStatistics class with a CyPerf API client.
+
+        Args:
+            client (cyperf.ApiClient): The CyPerf API client instance.
+        """
         self.client = client
         self.session_client = SessionsApi(self.client)
 
@@ -20,7 +25,19 @@ class CyperfStatistics:
         time_from: Optional[int] = None,
         time_to: Optional[int] = None
     ) -> Union[Dict[str, Any], Exception]:
-        """Collects test run statistics for a given session."""
+        """
+        Collects test run statistics for a given session.
+
+        Args:
+            session_id (str, optional): The ID of the session to collect stats for.
+            stats_name (str, optional): The name of the stat to collect.
+            time_from (int, optional): The start time for stats collection.
+            time_to (int, optional): The end time for stats collection.
+
+        Returns:
+            dict: A dictionary of processed statistics.
+            Exception: If the collection fails.
+        """
         try:
             test = self.session_client.get_session_test(session_id=session_id)
             test_id = [a[1] for a in test if a[0] == 'test_id'][0]
@@ -60,7 +77,18 @@ class CyperfStatistics:
         processed_stats: Optional[Dict[str, Any]] = None,
         stat_name: Optional[str] = None
     ) -> Union[pd.DataFrame, Exception]:
-        """Visualizes the selected stat as a time series using pandas and prints available columns."""
+        """
+        Visualizes the selected stat as a time series using pandas and prints available columns.
+
+        Args:
+            session_id (str, optional): The ID of the session to visualize stats for.
+            processed_stats (dict, optional): The processed stats to visualize.
+            stat_name (str, optional): The name of the stat to visualize.
+
+        Returns:
+            pd.DataFrame: A DataFrame of the last 50 rows of the selected stat.
+            Exception: If the visualization fails.
+        """
         try:
             if not processed_stats:
                 processed_stats = self.collect_test_run_stats(session_id=session_id, stats_name=stat_name)
@@ -80,7 +108,16 @@ class CyperfStatistics:
             return Exception(f"Failed to view stats: {str(e)}")
 
     def show_available_stats(self, session_id: Optional[str] = None) -> Union[List[str], Exception]:
-        """Shows all available stats for a given session."""
+        """
+        Shows all available stats for a given session.
+
+        Args:
+            session_id (str, optional): The ID of the session to show available stats for.
+
+        Returns:
+            list: A list of available stat names.
+            Exception: If the retrieval fails.
+        """
         try:
             collected_stats = self.collect_test_run_stats(session_id=session_id)
             if isinstance(collected_stats, Exception):

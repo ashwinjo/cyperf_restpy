@@ -21,6 +21,7 @@ def main() -> None:
             username="admin",
             password="CyPerf&Keysight#1"
         ).get_cyperf_client()
+
         cyperf_results = CyperfResults(cyperf_client)
         result = cyperf_results.start_result_generate_all(
             session_id="appsec-9d25e7bb-f165-495e-82b2-278d6c1573d2"
@@ -29,6 +30,14 @@ def main() -> None:
         result = cyperf_results.start_result_generate_results(
             session_id="appsec-9d25e7bb-f165-495e-82b2-278d6c1573d2"
         )
+        print(result)
+
+        result = cyperf_results.load_all_results(
+            session_id="appsec-9d25e7bb-f165-495e-82b2-278d6c1573d2"
+        )
+        print(result)
+
+        result = cyperf_results.show_all_available_results()
         print(result)
     except Exception as e:
         print(f"Exception: {e}")
