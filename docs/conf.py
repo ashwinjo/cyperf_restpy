@@ -3,6 +3,7 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('..'))
+sys.path.insert(0, os.path.abspath('../cyperf_restpy'))
 
 autodoc_mock_imports = ["cyperf", "pandas"]
 
@@ -36,3 +37,5 @@ autodoc_default_options = {
     'undoc-members': True,
     'exclude-members': '__weakref__'
 }
+
+autodoc_typehints = "description"
