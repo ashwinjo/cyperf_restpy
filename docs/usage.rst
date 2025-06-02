@@ -121,3 +121,11 @@ test_cyperf_results.py
    :language: python
    :caption: Sample: Results Management
    :lines: 1-37
+
+
+test_cyperf_licensing.py
+------------------------
+.. literalinclude:: ../cyperf_restpy/sample_scripts/test_cyperf_licensing.py
+   :language: python
+   :caption: Sample: Licensing Management
+   :lines: 1-37
